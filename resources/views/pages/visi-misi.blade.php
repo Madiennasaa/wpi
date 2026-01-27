@@ -117,200 +117,107 @@
     </div>
 </section>
 
-{{-- VISI SECTION --}}
-<section class="py-20 lg:py-32 bg-white relative overflow-hidden">
-    {{-- Background Decoration --}}
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 right-20 w-96 h-96 bg-tosca-200 rounded-full blur-3xl"></div>
+{{-- VISI MISI SECTION --}}
+<section class="py-20 lg:py-32 bg-gradient-to-br from-tosca-700 via-tosca-600 to-tosca-500 relative overflow-hidden">
+    {{-- Decorative Background --}}
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-tosca-300 rounded-full blur-3xl"></div>
     </div>
-    
-    <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-2xl mb-6 icon-pulse">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                </svg>
-            </div>
-            
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Visi <span class="gradient-text">WPI</span>
-            </h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-8"></div>
-        </div>
 
-        <div class="vision-card max-w-4xl mx-auto">
-            <div class="animated-gradient bg-gradient-to-br from-tosca-600 via-tosca-500 to-tosca-400 rounded-3xl p-10 lg:p-16 shadow-2xl text-white relative overflow-hidden">
-                {{-- Decorative Elements --}}
-                <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl opacity-10"></div>
-                
-                <div class="relative">
-                    {{-- Quote Mark --}}
-                    <div class="mb-6">
-                        <svg class="w-16 h-16 text-yellow-300 opacity-60" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                        </svg>
-                    </div>
-                    
-                    <p class="text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed mb-8">
-                        Menjadikan HIPMI sebagai organisasi <strong class="font-bold text-yellow-300">pencetak pengusaha muda</strong> dan pembentuk ekosistem wirausaha terbaik di Kota Jakarta melalui program kerja yang <strong class="font-bold text-yellow-300">tepat inovatif</strong> dengan semangat dan marwah organisasi HIPMI.
-                    </p>
-                    
-                    {{-- Key Points --}}
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                            <div class="text-3xl mb-2">🏢</div>
-                            <p class="text-sm font-semibold">Pencetak Pengusaha</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                            <div class="text-3xl mb-2">🌐</div>
-                            <p class="text-sm font-semibold">Ekosistem Terbaik</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                            <div class="text-3xl mb-2">💡</div>
-                            <p class="text-sm font-semibold">Program Inovatif</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                            <div class="text-3xl mb-2">🔥</div>
-                            <p class="text-sm font-semibold">Semangat HIPMI</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- MISI SECTION --}}
-<section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-    {{-- Background Decoration --}}
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute bottom-20 left-20 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {{-- Heading --}}
         <div class="text-center mb-16">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl mb-6 icon-pulse">
-                <svg class="w-10 h-10 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-            </div>
-            
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Misi <span class="gradient-text-yellow">WPI</span>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                Visi & Misi Kami
             </h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-yellow-400 to-tosca-500 mx-auto rounded-full mb-8"></div>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Empat pilar utama yang menjadi langkah strategis WPI dalam mewujudkan visi organisasi
+            <p class="text-tosca-100 text-lg">
+                Landasan gerak Wirausaha Pelajar Indonesia
             </p>
         </div>
 
-        <div class="max-w-5xl mx-auto space-y-6">
-            {{-- Mission Item 1 --}}
-            <div class="mission-item group">
-                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="flex gap-6 items-start">
-                        <div class="mission-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-white">01</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-tosca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                    </svg>
-                                </div>
-                                <p class="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                                    Bangun koneksi dan kolaborasi dengan semangat inovasi dan optimalisasi.
-                                </p>
-                            </div>
-                            <div class="ml-13">
-                                <span class="inline-block px-3 py-1 bg-tosca-50 text-tosca-700 rounded-full text-xs font-semibold">Koneksi & Kolaborasi</span>
-                            </div>
-                        </div>
-                    </div>
+        <div class="grid lg:grid-cols-2 gap-8">
+            {{-- VISI --}}
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 lg:p-12 rounded-3xl hover:bg-white/15 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7
+                               -1.274 4.057-5.064 7-9.542 7
+                               -4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
                 </div>
+
+                <h3 class="font-display text-3xl lg:text-4xl font-bold text-yellow-300 mb-6 uppercase tracking-wide">
+                    Visi
+                </h3>
+
+                <p class="text-lg text-white/90 leading-relaxed">
+                    Menjadikan <strong class="text-yellow-300">Wirausaha Pelajar Indonesia (WPI)</strong>
+                    sebagai wadah utama dalam mencetak <strong class="text-yellow-300">wirausaha muda sejak dini</strong>,
+                    serta membangun ekosistem kewirausahaan pelajar yang
+                    <strong class="text-yellow-300">inovatif, mandiri, dan berdaya saing</strong>
+                    di seluruh Indonesia.
+                </p>
             </div>
 
-            {{-- Mission Item 2 --}}
-            <div class="mission-item group">
-                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="flex gap-6 items-start">
-                        <div class="mission-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-gray-900">02</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                    </svg>
-                                </div>
-                                <p class="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                                    Pengembangan ilmu dan kompetensi untuk anggota.
-                                </p>
-                            </div>
-                            <div class="ml-13">
-                                <span class="inline-block px-3 py-1 bg-yellow-50 text-yellow-700 rounded-full text-xs font-semibold">Pengembangan Kapasitas</span>
-                            </div>
-                        </div>
-                    </div>
+            {{-- MISI --}}
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 lg:p-12 rounded-3xl hover:bg-white/15 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
                 </div>
-            </div>
 
-            {{-- Mission Item 3 --}}
-            <div class="mission-item group">
-                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="flex gap-6 items-start">
-                        <div class="mission-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-white">03</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-tosca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
-                                </div>
-                                <p class="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                                    Membantu solusi modal dan akses pasar untuk anggota.
-                                </p>
-                            </div>
-                            <div class="ml-13">
-                                <span class="inline-block px-3 py-1 bg-tosca-50 text-tosca-700 rounded-full text-xs font-semibold">Modal & Akses Pasar</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <h3 class="font-display text-3xl lg:text-4xl font-bold text-yellow-300 mb-6 uppercase tracking-wide">
+                    Misi
+                </h3>
 
-            {{-- Mission Item 4 --}}
-            <div class="mission-item group">
-                <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                    <div class="flex gap-6 items-start">
-                        <div class="mission-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-gray-900">04</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                    </svg>
-                                </div>
-                                <p class="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                                    Menyebarkan semangat kewirausahaan di Kota Jakarta.
-                                </p>
-                            </div>
-                            <div class="ml-13">
-                                <span class="inline-block px-3 py-1 bg-yellow-50 text-yellow-700 rounded-full text-xs font-semibold">Semangat Kewirausahaan</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <ul class="space-y-5">
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">
+                            1
+                        </span>
+                        <span class="text-lg">
+                            Menumbuhkan jiwa kewirausahaan serta membangun koneksi dan kolaborasi
+                            antar pelajar dan mahasiswa di seluruh Indonesia.
+                        </span>
+                    </li>
 
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">
+                            2
+                        </span>
+                        <span class="text-lg">
+                            Mengembangkan ilmu, keterampilan, dan kompetensi kewirausahaan anggota
+                            melalui edukasi, pelatihan, dan pendampingan berkelanjutan.
+                        </span>
+                    </li>
+
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">
+                            3
+                        </span>
+                        <span class="text-lg">
+                            Membantu akses permodalan, pemasaran, serta peluang usaha
+                            guna mendorong pertumbuhan bisnis anggota.
+                        </span>
+                    </li>
+
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">
+                            4
+                        </span>
+                        <span class="text-lg">
+                            Menanamkan dan menyebarkan semangat kewirausahaan
+                            di kalangan pelajar dan mahasiswa secara berkelanjutan.
+                        </span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>

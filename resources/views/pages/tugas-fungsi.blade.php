@@ -18,6 +18,14 @@
     .task-item:nth-child(4) { animation-delay: 0.4s; }
     .task-item:nth-child(5) { animation-delay: 0.5s; }
     
+    /* Fallback for no animation support */
+    @media (prefers-reduced-motion: reduce) {
+        .task-item {
+            opacity: 1;
+            animation: none;
+        }
+    }
+    
     @keyframes slideInRight {
         from {
             opacity: 0;
@@ -39,6 +47,14 @@
     .function-card:nth-child(2) { animation-delay: 0.2s; }
     .function-card:nth-child(3) { animation-delay: 0.3s; }
     .function-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    /* Fallback for no animation support */
+    @media (prefers-reduced-motion: reduce) {
+        .function-card {
+            opacity: 1;
+            animation: none;
+        }
+    }
     
     @keyframes fadeInUp {
         from {
@@ -135,8 +151,8 @@
 
         <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
             {{-- Task Item 1 --}}
-            <div class="task-item group">
-                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="task-item group flex">
+                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 w-full">
                     <div class="flex gap-5 items-start">
                         <div class="task-number flex-shrink-0 w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-2xl font-bold text-gray-900">01</span>
@@ -156,8 +172,8 @@
             </div>
 
             {{-- Task Item 2 --}}
-            <div class="task-item group">
-                <div class="bg-gradient-to-br from-white to-yellow-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="task-item group flex">
+                <div class="bg-gradient-to-br from-white to-yellow-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 w-full">
                     <div class="flex gap-5 items-start">
                         <div class="task-number flex-shrink-0 w-14 h-14 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-2xl font-bold text-white">02</span>
@@ -177,8 +193,8 @@
             </div>
 
             {{-- Task Item 3 --}}
-            <div class="task-item group">
-                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="task-item group flex">
+                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 w-full">
                     <div class="flex gap-5 items-start">
                         <div class="task-number flex-shrink-0 w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-2xl font-bold text-gray-900">03</span>
@@ -198,8 +214,8 @@
             </div>
 
             {{-- Task Item 4 --}}
-            <div class="task-item group">
-                <div class="bg-gradient-to-br from-white to-yellow-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="task-item group flex">
+                <div class="bg-gradient-to-br from-white to-yellow-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 w-full">
                     <div class="flex gap-5 items-start">
                         <div class="task-number flex-shrink-0 w-14 h-14 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-2xl font-bold text-white">04</span>
@@ -219,8 +235,8 @@
             </div>
 
             {{-- Task Item 5 --}}
-            <div class="task-item group md:col-span-2 max-w-2xl mx-auto w-full">
-                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="task-item group md:col-span-2 max-w-2xl mx-auto w-full flex">
+                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 w-full">
                     <div class="flex gap-5 items-start">
                         <div class="task-number flex-shrink-0 w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-2xl font-bold text-gray-900">05</span>
@@ -266,12 +282,12 @@
 
         <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {{-- Function Card 1 --}}
-            <div class="function-card group">
-                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+            <div class="function-card flex">
+                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden w-full flex flex-col">
                     {{-- Corner Accent --}}
                     <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-bl-[100px] opacity-50"></div>
                     
-                    <div class="relative">
+                    <div class="relative flex flex-col flex-1">
                         <div class="w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <i class="function-icon fas fa-hands-helping text-3xl text-white"></i>
                         </div>
@@ -280,7 +296,7 @@
                             Fasilitator
                         </h3>
                         
-                        <p class="text-gray-600 leading-relaxed text-lg">
+                        <p class="text-gray-600 leading-relaxed text-lg flex-1">
                             Menyediakan ruang belajar, diskusi, dan kolaborasi kewirausahaan bagi seluruh pelajar dan mahasiswa.
                         </p>
                         
@@ -293,12 +309,12 @@
             </div>
 
             {{-- Function Card 2 --}}
-            <div class="function-card group">
-                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+            <div class="function-card flex">
+                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden w-full flex flex-col">
                     {{-- Corner Accent --}}
                     <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-bl-[100px] opacity-50"></div>
                     
-                    <div class="relative">
+                    <div class="relative flex flex-col flex-1">
                         <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <i class="function-icon fas fa-chalkboard-teacher text-3xl text-gray-900"></i>
                         </div>
@@ -307,7 +323,7 @@
                             Edukator
                         </h3>
                         
-                        <p class="text-gray-600 leading-relaxed text-lg">
+                        <p class="text-gray-600 leading-relaxed text-lg flex-1">
                             Memberikan pendidikan dan pelatihan kewirausahaan berkualitas kepada pelajar di seluruh Indonesia.
                         </p>
                         
@@ -320,12 +336,12 @@
             </div>
 
             {{-- Function Card 3 --}}
-            <div class="function-card group">
-                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+            <div class="function-card flex">
+                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden w-full flex flex-col">
                     {{-- Corner Accent --}}
                     <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-bl-[100px] opacity-50"></div>
                     
-                    <div class="relative">
+                    <div class="relative flex flex-col flex-1">
                         <div class="w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <i class="function-icon fas fa-handshake text-3xl text-white"></i>
                         </div>
@@ -334,7 +350,7 @@
                             Mediator
                         </h3>
                         
-                        <p class="text-gray-600 leading-relaxed text-lg">
+                        <p class="text-gray-600 leading-relaxed text-lg flex-1">
                             Menghubungkan pelajar dengan dunia usaha dan pemangku kepentingan untuk menciptakan sinergi.
                         </p>
                         
@@ -347,12 +363,12 @@
             </div>
 
             {{-- Function Card 4 --}}
-            <div class="function-card group">
-                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+            <div class="function-card flex">
+                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden w-full flex flex-col">
                     {{-- Corner Accent --}}
                     <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-bl-[100px] opacity-50"></div>
                     
-                    <div class="relative">
+                    <div class="relative flex flex-col flex-1">
                         <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                             <i class="function-icon fas fa-lightbulb text-3xl text-gray-900"></i>
                         </div>
@@ -361,7 +377,7 @@
                             Inkubator
                         </h3>
                         
-                        <p class="text-gray-600 leading-relaxed text-lg">
+                        <p class="text-gray-600 leading-relaxed text-lg flex-1">
                             Mendorong lahirnya ide dan usaha rintisan inovatif dari kalangan pelajar dan mahasiswa.
                         </p>
                         

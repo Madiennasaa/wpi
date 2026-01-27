@@ -283,8 +283,11 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="nav-link text-white font-semibold text-sm py-2">Berita dan Kegiatan</a>
-                    <a href="#" class="nav-link text-white font-semibold text-sm py-2">Kontak</a>
+                    <a href="{{ route('artikel.index') }}"
+                        class="nav-link text-white font-semibold text-sm py-2">
+                        Berita dan Kegiatan
+                    </a>
+                    <a href="/kontak" class="nav-link text-white font-semibold text-sm py-2">Kontak</a>
                 </nav>
 
                 {{-- Right Side: Social & CTA --}}
@@ -391,7 +394,7 @@
                 {{-- Column 1 --}}
                 <div>
                     <div class="mb-6">
-                        <h3 class="font-display text-3xl font-bold gradient-text-yellow mb-2">WPI</h3>
+                        <h3 class="font-display text-3xl font-bold gradient-text-white mb-2">WPI</h3>
                         <p class="text-tosca-300 font-semibold">Wirausaha Pelajar Indonesia</p>
                     </div>
                     <p class="text-gray-300 leading-relaxed mb-6 text-lg">
