@@ -71,12 +71,19 @@
             mask-composite: exclude;
         }
     </style>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-tosca-50/30">
-
+<body class="bg-gradient-to-br from-gray-50 to-tosca-50/30" x-data="{ sidebarOpen: false }">
     <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside class="w-72 bg-white shadow-xl hidden lg:flex flex-col sticky top-0 h-screen border-r border-gray-100">
+        <!-- Overlay -->
+        <div
+            x-show="sidebarOpen"
+            x-transition.opacity
+            @click="sidebarOpen = false"
+            class="fixed inset-0 bg-black/40 z-30 lg:hidden">
+        </div>
+        <aside class="fixed inset-y-0 left-0 z-40 w-72 bg-white shadow-xl border-r border-gray-100 transform transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static lg:flex flex-col"
+            :class="{ 'translate-x-0': sidebarOpen }">
             <!-- Logo Section -->
             <div class="p-6 border-b border-gray-100">
                 <div class="flex items-center gap-3">
@@ -146,7 +153,9 @@
             <!-- Header -->
             <header class="h-20 bg-white/80 backdrop-blur-sm border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
                 <div class="lg:hidden">
-                    <button class="p-2 rounded-lg hover:bg-gray-100">
+                    <button
+                        @click="sidebarOpen = !sidebarOpen"
+                        class="p-2 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-bars text-gray-700"></i>
                     </button>
                 </div>

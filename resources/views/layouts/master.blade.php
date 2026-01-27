@@ -401,19 +401,34 @@
                         Komunitas pelajar dan mahasiswa yang berfokus pada pemberdayaan ekonomi, menciptakan kolaborasi antar anggota, dan mendorong inovasi untuk mencapai kesuksesan bersama.
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://www.facebook.com/wirausahapelajarindonesia" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        {{-- Facebook --}}
+                        <a href="https://www.facebook.com/wirausahapelajarindonesia"
+                        target="_blank"
+                        class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
                             <i class="fab fa-facebook-f text-lg"></i>
                         </a>
-                        <a href="https://www.instagram.com/wirausahapelajar/" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        {{-- Instagram --}}
+                        <a href="https://www.instagram.com/wirausahapelajar/"
+                        target="_blank"
+                        class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        {{-- Twitter / X --}}
+                        <a href="https://twitter.com/wirapelajar"
+                        target="_blank"
+                        class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
                             <i class="fab fa-twitter text-lg"></i>
                         </a>
-                        <a href="https://www.youtube.com/@wirausahapelajarindonesia6565" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        {{-- YouTube --}}
+                        <a href="https://www.youtube.com/@wirausahapelajarindonesia6565"
+                        target="_blank"
+                        class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
                             <i class="fab fa-youtube text-lg"></i>
                         </a>
-                        <a href="#" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        {{-- LinkedIn --}}
+                        <a href="https://www.linkedin.com/company/wirausaha-pelajar-indonesia/"
+                        target="_blank"
+                        class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
                             <i class="fab fa-linkedin-in text-lg"></i>
                         </a>
                     </div>
