@@ -6,324 +6,814 @@
 @section('og_title', 'Wirausaha Pelajar Indonesia')
 @section('og_description', 'Jadilah bagian dari jaringan wirausaha pelajar terbesar di Indonesia')
 
+@push('styles')
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --tosca-50: #f0fdfc;
+        --tosca-100: #ccfbf6;
+        --tosca-200: #99f6ea;
+        --tosca-300: #5eead4;
+        --tosca-400: #2dd4bf;
+        --tosca-500: #14b8a6;
+        --tosca-600: #0d9488;
+        --tosca-700: #0f766e;
+        --tosca-800: #115e59;
+        --tosca-900: #134e4a;
+        
+        --yellow-50: #fefce8;
+        --yellow-100: #fef9c3;
+        --yellow-200: #fef08a;
+        --yellow-300: #fde047;
+        --yellow-400: #facc15;
+        --yellow-500: #eab308;
+        --yellow-600: #ca8a04;
+        
+        --gray-50: #fafafa;
+        --gray-100: #f5f5f5;
+        --gray-200: #e5e5e5;
+        --gray-600: #525252;
+        --gray-700: #404040;
+        --gray-800: #262626;
+        --gray-900: #171717;
+    }
+    
+    * {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .font-display {
+        font-family: 'Playfair Display', Georgia, serif;
+    }
+    
+    /* Smooth Scroll */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Hero Gradient Animation */
+    @keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, var(--tosca-700) 0%, var(--tosca-600) 50%, var(--tosca-500) 100%);
+        background-size: 200% 200%;
+        animation: gradient-shift 15s ease infinite;
+    }
+    
+    /* Decorative Elements */
+    .decorative-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        pointer-events: none;
+    }
+    
+    /* Card Hover Effects */
+    .card-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-8px);
+    }
+    
+    /* Stat Counter Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .stat-item {
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    /* Gradient Text */
+    .gradient-text {
+        background: linear-gradient(135deg, var(--tosca-600) 0%, var(--tosca-400) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        /* Tambahkan dua baris di bawah ini */
+        display: inline-block;
+        padding: 0.1em 0; 
+    }
+    
+    .gradient-text-yellow {
+        background: linear-gradient(135deg, var(--yellow-500) 0%, var(--yellow-400) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+        position: relative;
+        overflow: hidden;
+        background: var(--yellow-400);
+        color: var(--gray-900);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: var(--yellow-500);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px -10px rgba(234, 179, 8, 0.4);
+    }
+    
+    .btn-secondary {
+        background: var(--tosca-600);
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        background: var(--tosca-700);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px -10px rgba(13, 148, 136, 0.4);
+    }
+    
+    /* Event Card Accent */
+    .event-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .event-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, var(--yellow-400) 0%, var(--yellow-500) 100%);
+    }
+    
+    /* News Badge */
+    .news-badge {
+        background: linear-gradient(135deg, var(--tosca-50) 0%, var(--tosca-100) 100%);
+        color: var(--tosca-700);
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+    }
+    
+    /* Activity Card Play Button */
+    .play-button {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .play-button:hover {
+        transform: scale(1.15);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Benefit Card */
+    .benefit-card {
+        position: relative;
+        background: white;
+        border: 2px solid var(--gray-100);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .benefit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--tosca-400) 0%, var(--yellow-400) 100%);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+    
+    .benefit-card:hover::before {
+        transform: scaleX(1);
+    }
+    
+    .benefit-card:hover {
+        border-color: var(--tosca-200);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px -15px rgba(20, 184, 166, 0.15);
+    }
+    
+    .benefit-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--tosca-50) 0%, var(--tosca-100) 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover .benefit-icon {
+        background: linear-gradient(135deg, var(--tosca-500) 0%, var(--tosca-400) 100%);
+        transform: rotate(-5deg) scale(1.1);
+    }
+    
+    .benefit-card:hover .benefit-icon i {
+        color: white;
+    }
+    
+    /* Social Links */
+    .social-link {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .social-link:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3);
+    }
+    
+    /* Section Reveal Animation */
+    @keyframes reveal {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .reveal-on-scroll {
+        opacity: 0;
+        animation: reveal 0.8s ease-out forwards;
+    }
+</style>
+@endpush
+
 @section('content')
 
 {{-- HERO SECTION --}}
-<section class="h-screen max-h-[500px] sm:max-h-[600px] md:max-h-[700px] lg:max-h-[85vh] bg-cover bg-center relative">
-    <div class="h-full bg-primary flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16">
-        <div class="max-w-2xl w-full text-white text-center lg:text-left">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-5 font-bold leading-tight drop-shadow-lg">Bangkit Bersama WPI</h1>
-            <p class="text-sm sm:text-base md:text-lg mb-6 md:mb-9 opacity-95 drop-shadow leading-relaxed">Wadah pelajar dan mahasiswa Indonesia untuk belajar, berwirausaha, dan bertumbuh bersama.</p>
-            <a href="#" class="inline-block bg-secondary px-6 sm:px-8 md:px-11 py-2.5 md:py-3.5 text-primary rounded-full font-bold text-xs sm:text-sm uppercase tracking-wide transition-all hover:bg-secondary-light hover:-translate-y-0.5 hover:shadow-lg hover:shadow-secondary/40">TENTANG KAMI</a>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-gradient">
+    {{-- Decorative Blobs --}}
+    <div class="decorative-blob w-96 h-96 bg-yellow-400 top-20 -left-48"></div>
+    <div class="decorative-blob w-80 h-80 bg-tosca-300 bottom-20 -right-40"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div class="max-w-4xl">
+            <div class="mb-6 inline-block">
+                <span class="px-4 py-2 bg-white/10 backdrop-blur-sm text-yellow-300 rounded-full text-sm font-semibold tracking-wider border border-white/20">
+                    Komunitas Wirausaha Indonesia
+                </span>
+            </div>
+            
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 leading-[1.1]">
+                Bangkit Bersama<br>
+                <span class="text-yellow-300">Wirausaha Pelajar</span>
+            </h1>
+            
+            <p class="text-xl lg:text-2xl text-tosca-50 mb-12 max-w-2xl leading-relaxed font-light">
+                Wadah pelajar dan mahasiswa Indonesia untuk belajar, berwirausaha, dan bertumbuh bersama menuju masa depan yang gemilang.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+                    MULAI PERJALANAN
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+                <a href="#" class="btn-secondary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold">
+                    TENTANG KAMI
+                </a>
+            </div>
         </div>
+    </div>
+    
+    {{-- Scroll Indicator --}}
+    <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
     </div>
 </section>
 
 {{-- STATS SECTION --}}
-<section class="py-8 sm:py-10 md:py-12 lg:py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+<section class="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white relative">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#0d948820_1px,transparent_1px),linear-gradient(to_bottom,#0d948820_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-4xl lg:text-5xl font-bold gradient-text mb-4 py-2">Anggota Kami</h2>
+            <p class="text-gray-600 text-lg">Angka yang membanggakan dari perjalanan WPI</p>
+        </div>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {{-- Stat 1 --}}
-            <div class="text-center p-3 sm:p-4">
-                <div class="mb-2 sm:mb-3">
-                    <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary">48</span>
+            <div class="stat-item text-center group">
+                <div class="mb-4">
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">48</span>
                 </div>
-                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-700 uppercase tracking-wide">Tahun</p>
+                <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
+                <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Tahun</p>
+                <p class="text-gray-500 text-sm mt-2">Pengalaman Berkarya</p>
             </div>
             
             {{-- Stat 2 --}}
-            <div class="text-center p-3 sm:p-4">
-                <div class="mb-2 sm:mb-3">
-                    <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary">6</span>
+            <div class="stat-item text-center group">
+                <div class="mb-4">
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">6</span>
                 </div>
-                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-700 uppercase tracking-wide">Cabang</p>
+                <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
+                <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Cabang</p>
+                <p class="text-gray-500 text-sm mt-2">Di Seluruh Indonesia</p>
             </div>
             
             {{-- Stat 3 --}}
-            <div class="text-center p-3 sm:p-4">
-                <div class="mb-2 sm:mb-3">
-                    <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary">3000</span>
-                    <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-secondary">+</span>
+            <div class="stat-item text-center group">
+                <div class="mb-4">
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">3000<span class="gradient-text-yellow">+</span></span>
                 </div>
-                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-700 uppercase tracking-wide">Anggota</p>
+                <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
+                <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Anggota</p>
+                <p class="text-gray-500 text-sm mt-2">Wirausahawan Muda</p>
             </div>
             
             {{-- Stat 4 --}}
-            <div class="text-center p-3 sm:p-4">
-                <div class="mb-2 sm:mb-3">
-                    <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary">171</span>
+            <div class="stat-item text-center group">
+                <div class="mb-4">
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">171</span>
                 </div>
-                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-700 uppercase tracking-wide">Pengurus Inti</p>
+                <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
+                <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Pengurus Inti</p>
+                <p class="text-gray-500 text-sm mt-2">Tim Profesional</p>
             </div>
         </div>
     </div>
 </section>
 
 {{-- ABOUT SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-[#f0fffe]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 items-center">
-            <div class="order-2 md:order-1">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl text-primary mb-3 md:mb-4 font-bold leading-tight">Wirausaha Pelajar Indonesia</h2>
-                <p class="text-xs sm:text-sm md:text-base text-primary font-semibold mb-4 md:mb-6 uppercase tracking-wide">Wadah pelajar dan mahasiswa untuk belajar, berwirausaha, dan bertumbuh</p>
-                <p class="mb-3 md:mb-4 text-gray-600 leading-relaxed text-sm md:text-base">Wirausaha Pelajar Indonesia (WPI) adalah wadah dinamis bagi para pelajar dan mahasiswa yang ingin berkembang, berinovasi, hingga berkontribusi dalam membangun perekonomian bangsa. Dengan semangat kolaborasi, WPI tidak hanya membangun jaringan bisnis, tetapi juga menciptakan ruang bagi pertumbuhan wirausaha baru yang berdaya saing tinggi.</p>
-                <p class="mb-5 md:mb-6 text-gray-600 leading-relaxed text-sm md:text-base">Sebagai komunitas yang solid, WPI menyediakan berbagai program dan jaringan strategis untuk membantu anggotanya mencapai kesuksesan. Mulai dari pelatihan, akses ke pasar, hingga kolaborasi dengan pemerintah dan sektor swasta, kami berkomitmen untuk menciptakan ekosistem bisnis yang mendukung pertumbuhan dan keberlanjutan usaha.</p>
-                <a href="#" class="inline-block bg-primary text-white px-6 sm:px-8 md:px-9 py-2.5 md:py-3 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wide transition-all hover:bg-primary-darker hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/40">KENALI LEBIH DALAM</a>
+<section class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="inline-block px-4 py-2 bg-tosca-50 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-6">
+                    TENTANG KAMI
+                </span>
+                
+                <h2 class="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    Wirausaha Pelajar <span class="gradient-text">Indonesia</span>
+                </h2>
+                
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    Wirausaha Pelajar Indonesia (WPI) adalah wadah dinamis bagi para pelajar dan mahasiswa yang ingin berkembang, berinovasi, hingga berkontribusi dalam membangun perekonomian bangsa.
+                </p>
+                
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Dengan semangat kolaborasi, WPI tidak hanya membangun jaringan bisnis, tetapi juga menciptakan ruang bagi pertumbuhan wirausaha baru yang berdaya saing tinggi di tingkat nasional maupun global.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-tosca-100 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-tosca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span class="text-gray-700 font-semibold">Program Berkualitas</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span class="text-gray-700 font-semibold">Jaringan Luas</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-tosca-100 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-tosca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span class="text-gray-700 font-semibold">Mentor Berpengalaman</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn-primary inline-flex items-center px-8 py-4 rounded-full text-base font-bold group">
+                    KENALI LEBIH DALAM
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
             </div>
-            <div class="order-1 md:order-2">
-                <img src="{{ asset('images/about.png') }}" alt="WPI" class="w-full rounded-lg shadow-2xl shadow-primary/20">
+            
+            <div class="order-1 lg:order-2 relative">
+                <div class="absolute -top-8 -left-8 w-32 h-32 bg-yellow-200 rounded-full blur-3xl opacity-50"></div>
+                <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-tosca-200 rounded-full blur-3xl opacity-50"></div>
+                <div class="relative">
+                    <img src="{{ asset('images/about.png') }}" alt="WPI" class="w-full rounded-3xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 max-w-xs">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-gray-900">3000+</p>
+                                <p class="text-sm text-gray-600">Anggota Aktif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 {{-- VISI MISI SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-visi">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch">
-            <div class="bg-[#1a6f62] p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-start rounded-lg">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-secondary mb-4 md:mb-6 font-extrabold uppercase tracking-wide">Visi</h2>
-                <p class="text-sm sm:text-base md:text-lg text-white leading-relaxed">Menjadikan HIPMI sebagai organisasi pencetak pengusaha muda dan pembentuk ekosistem wirausaha terbaik di Kota Jakarta melalui program kerja yang tepat inovatif dengan semangat dan marwah organisasi HIPMI</p>
+<section class="py-20 lg:py-32 bg-gradient-to-br from-tosca-700 via-tosca-600 to-tosca-500 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-tosca-300 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4">Visi & Misi Kami</h2>
+            <p class="text-tosca-100 text-lg">Panduan dalam setiap langkah perjalanan WPI</p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-8">
+            {{-- Visi --}}
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 lg:p-12 rounded-3xl hover:bg-white/15 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                </div>
+                <h3 class="font-display text-3xl lg:text-4xl font-bold text-yellow-300 mb-6 uppercase tracking-wide">Visi</h3>
+                <p class="text-lg text-white/90 leading-relaxed">
+                    Menjadikan HIPMI sebagai organisasi pencetak pengusaha muda dan pembentuk ekosistem wirausaha terbaik di Kota Jakarta melalui program kerja yang tepat inovatif dengan semangat dan marwah organisasi HIPMI
+                </p>
             </div>
-            <div class="bg-[#0f4d47] p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-start rounded-lg">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-secondary mb-4 md:mb-6 font-extrabold uppercase tracking-wide">Misi</h2>
-                <ol class="list-none p-0 m-0 space-y-3 md:space-y-4">
-                    <li class="text-sm sm:text-base md:text-lg text-white leading-relaxed pl-7 sm:pl-8 relative before:content-['1.'] before:absolute before:left-0 before:font-bold before:text-secondary before:text-base sm:before:text-lg">Bangun koneksi dan kolaborasi dengan semangat inovasi dan optimalisasi</li>
-                    <li class="text-sm sm:text-base md:text-lg text-white leading-relaxed pl-7 sm:pl-8 relative before:content-['2.'] before:absolute before:left-0 before:font-bold before:text-secondary before:text-base sm:before:text-lg">Pengembangan ilmu dan kompetensi untuk anggota</li>
-                    <li class="text-sm sm:text-base md:text-lg text-white leading-relaxed pl-7 sm:pl-8 relative before:content-['3.'] before:absolute before:left-0 before:font-bold before:text-secondary before:text-base sm:before:text-lg">Membantu solusi modal dan akses pasar untuk anggota</li>
-                    <li class="text-sm sm:text-base md:text-lg text-white leading-relaxed pl-7 sm:pl-8 relative before:content-['4.'] before:absolute before:left-0 before:font-bold before:text-secondary before:text-base sm:before:text-lg">Menyebarkan semangat kewirausahaan di Kota Jakarta</li>
-                </ol>
+            
+            {{-- Misi --}}
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 lg:p-12 rounded-3xl hover:bg-white/15 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="font-display text-3xl lg:text-4xl font-bold text-yellow-300 mb-6 uppercase tracking-wide">Misi</h3>
+                <ul class="space-y-5">
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">1</span>
+                        <span class="text-lg">Bangun koneksi dan kolaborasi dengan semangat inovasi dan optimalisasi</span>
+                    </li>
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">2</span>
+                        <span class="text-lg">Pengembangan ilmu dan kompetensi untuk anggota</span>
+                    </li>
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">3</span>
+                        <span class="text-lg">Membantu solusi modal dan akses pasar untuk anggota</span>
+                    </li>
+                    <li class="flex gap-4 text-white/90 leading-relaxed">
+                        <span class="flex-shrink-0 w-8 h-8 bg-yellow-400 text-gray-900 rounded-lg flex items-center justify-center font-bold text-sm">4</span>
+                        <span class="text-lg">Menyebarkan semangat kewirausahaan di Kota Jakarta</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
 {{-- EVENTS & NEWS SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-[1.5fr_1fr] gap-8 md:gap-10 lg:gap-16">
+<section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-16">
             {{-- Left: News --}}
             <div>
-                <h2 class="text-xl sm:text-2xl md:text-3xl text-[#FFD700] font-bold mb-6 md:mb-8 lg:mb-10">
-                    Berita, Cerita, dan Kegiatan WPI
-                </h2>
-                
-                <div class="space-y-6">
-                    {{-- News Item 1 --}}
-                    <div class="bg-white rounded-lg md:rounded-none overflow-hidden shadow-sm md:shadow-none flex flex-col sm:flex-row gap-4 md:gap-6 p-4 md:p-0 md:pb-6 border-b border-gray-200">
-                        <div class="w-full sm:w-48 md:w-52 h-48 sm:h-40 md:h-44 flex-shrink-0 rounded-lg md:rounded-none overflow-hidden">
-                            <img src="{{ asset('images/news1.png') }}" alt="Berita WPI 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1 md:py-4">
-                            <span class="inline-block bg-[#E8F5F3] text-[#1a6f62] px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit">
-                                WPI NEWS
-                            </span>
-                            <h3 class="text-base sm:text-lg md:text-xl text-gray-900 font-bold mb-2 md:mb-3 leading-snug">
-                                Seminar Nasional Kewirausahaan Pelajar WPI 2025
-                            </h3>
-                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                                Seminar nasional Wirausaha Pelajar Indonesia yang membahas penguatan karakter
-                                positif, produktif, dan kreatif melalui kewirausahaan sejak dini [...]
-                            </p>
-                        </div>
-                    </div>
-                    
-                    {{-- News Item 2 --}}
-                    <div class="bg-white rounded-lg md:rounded-none overflow-hidden shadow-sm md:shadow-none flex flex-col sm:flex-row gap-4 md:gap-6 p-4 md:p-0 md:pb-6 border-b border-gray-200">
-                        <div class="w-full sm:w-48 md:w-52 h-48 sm:h-40 md:h-44 flex-shrink-0 rounded-lg md:rounded-none overflow-hidden">
-                            <img src="{{ asset('images/news2.png') }}" alt="Berita WPI 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1 md:py-4">
-                            <span class="inline-block bg-[#E8F5F3] text-[#1a6f62] px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit">
-                                KEGIATAN
-                            </span>
-                            <h3 class="text-base sm:text-lg md:text-xl text-gray-900 font-bold mb-2 md:mb-3 leading-snug">
-                                Pelatihan Bisnis Digital untuk Pelajar dan Mahasiswa
-                            </h3>
-                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                                WPI menyelenggarakan pelatihan bisnis digital sebagai bagian dari program edukasi
-                                kewirausahaan bagi pelajar dan mahasiswa di seluruh Indonesia [...]
-                            </p>
-                        </div>
-                    </div>
-                    
-                    {{-- News Item 3 --}}
-                    <div class="bg-white rounded-lg md:rounded-none overflow-hidden shadow-sm md:shadow-none flex flex-col sm:flex-row gap-4 md:gap-6 p-4 md:p-0 md:pb-6 border-b border-gray-200">
-                        <div class="w-full sm:w-48 md:w-52 h-48 sm:h-40 md:h-44 flex-shrink-0 rounded-lg md:rounded-none overflow-hidden">
-                            <img src="{{ asset('images/news3.png') }}" alt="Berita WPI 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1 md:py-4">
-                            <span class="inline-block bg-[#E8F5F3] text-[#1a6f62] px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit">
-                                WPI UPDATE
-                            </span>
-                            <h3 class="text-base sm:text-lg md:text-xl text-gray-900 font-bold mb-2 md:mb-3 leading-snug">
-                                Jaringan Anggota WPI Terus Bertumbuh di Berbagai Daerah
-                            </h3>
-                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                                Wirausaha Pelajar Indonesia terus berkembang dan menghimpun pelajar serta mahasiswa
-                                dari berbagai daerah sebagai bagian dari gerakan wirausaha pelajar nasional [...]
-                            </p>
-                        </div>
-                    </div>
+                <div class="mb-10">
+                    <span class="inline-block px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-bold tracking-wider mb-4">
+                        BERITA & KEGIATAN
+                    </span>
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900">
+                        Cerita & Kegiatan <span class="gradient-text-yellow">WPI</span>
+                    </h2>
                 </div>
                 
-                <a href="#" class="inline-block bg-gradient-to-r from-[#1a9b8a] to-[#157d71] text-white px-6 sm:px-8 md:px-10 py-2.5 md:py-3 rounded-full font-bold text-xs sm:text-sm uppercase transition-all hover:shadow-lg hover:shadow-[#1a9b8a]/30 hover:-translate-y-0.5 mt-6 md:mt-8">
-                    BACA ARTIKEL LAINNYA
-                </a>
+                <div class="space-y-8">
+                    {{-- News Item 1 --}}
+                    <article class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <div class="grid sm:grid-cols-[200px_1fr] gap-6">
+                                <div class="h-48 sm:h-auto overflow-hidden">
+                                    <img src="{{ asset('images/news1.png') }}" alt="Berita WPI 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 sm:py-6 sm:pr-6">
+                                    <span class="news-badge inline-block px-3 py-1.5 rounded-full mb-3">
+                                        WPI NEWS
+                                    </span>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-600 transition-colors leading-tight">
+                                        Seminar Nasional Kewirausahaan Pelajar WPI 2025
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed mb-4">
+                                        Seminar nasional Wirausaha Pelajar Indonesia yang membahas penguatan karakter positif, produktif, dan kreatif melalui kewirausahaan sejak dini.
+                                    </p>
+                                    <span class="text-sm text-tosca-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                                        Baca Selengkapnya
+                                        <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    {{-- News Item 2 --}}
+                    <article class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <div class="grid sm:grid-cols-[200px_1fr] gap-6">
+                                <div class="h-48 sm:h-auto overflow-hidden">
+                                    <img src="{{ asset('images/news2.png') }}" alt="Berita WPI 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 sm:py-6 sm:pr-6">
+                                    <span class="news-badge inline-block px-3 py-1.5 rounded-full mb-3">
+                                        KEGIATAN
+                                    </span>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-600 transition-colors leading-tight">
+                                        Pelatihan Bisnis Digital untuk Pelajar dan Mahasiswa
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed mb-4">
+                                        WPI menyelenggarakan pelatihan bisnis digital sebagai bagian dari program edukasi kewirausahaan bagi pelajar dan mahasiswa di seluruh Indonesia.
+                                    </p>
+                                    <span class="text-sm text-tosca-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                                        Baca Selengkapnya
+                                        <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    {{-- News Item 3 --}}
+                    <article class="group cursor-pointer">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <div class="grid sm:grid-cols-[200px_1fr] gap-6">
+                                <div class="h-48 sm:h-auto overflow-hidden">
+                                    <img src="{{ asset('images/news3.png') }}" alt="Berita WPI 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 sm:py-6 sm:pr-6">
+                                    <span class="news-badge inline-block px-3 py-1.5 rounded-full mb-3">
+                                        WPI UPDATE
+                                    </span>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-600 transition-colors leading-tight">
+                                        Jaringan Anggota WPI Terus Bertumbuh di Berbagai Daerah
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed mb-4">
+                                        Wirausaha Pelajar Indonesia terus berkembang dan menghimpun pelajar serta mahasiswa dari berbagai daerah sebagai bagian dari gerakan wirausaha pelajar nasional.
+                                    </p>
+                                    <span class="text-sm text-tosca-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                                        Baca Selengkapnya
+                                        <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="mt-10">
+                    <a href="#" class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold group">
+                        BACA ARTIKEL LAINNYA
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
             
             {{-- Right: Calendar Events --}}
-            <div class="space-y-4 md:space-y-6">
-                <div class="bg-gradient-to-br from-[#f0fffe] to-[#e8fffe] border-l-4 border-[#FFD54F] p-5 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
-                    <div class="flex gap-4 sm:gap-6">
-                        <div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#1a9b8a] to-[#157d71] px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[70px] sm:min-w-[80px]">
-                            <span class="text-xs font-bold text-white uppercase">OKT</span>
-                            <span class="text-4xl sm:text-5xl font-bold text-[#FFD54F] leading-none">22</span>
+            <div>
+                <div class="mb-8">
+                    <span class="inline-block px-4 py-2 bg-tosca-50 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-4">
+                        AGENDA
+                    </span>
+                    <h3 class="font-display text-3xl font-bold text-gray-900">Event Mendatang</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    {{-- Event 1 --}}
+                    <div class="event-card bg-gradient-to-br from-white to-tosca-50/30 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-tosca-600 to-tosca-500 rounded-xl flex flex-col items-center justify-center text-white shadow-lg">
+                                <span class="text-xs font-bold uppercase tracking-wide">Okt</span>
+                                <span class="text-3xl font-bold leading-none">22</span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="text-sm text-tosca-600 font-medium flex items-center gap-1 mb-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    09:00 - Selesai
+                                </span>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                                    Seminar Kewirausahaan Pelajar Nasional WPI
+                                </h4>
+                                <p class="text-sm text-gray-600 flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                    Aula Pendidikan / Hybrid
+                                </p>
+                            </div>
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-xs sm:text-sm text-[#1a9b8a] font-medium block mb-2">
-                                <i class="far fa-clock mr-1"></i> 09:00 - Selesai
-                            </span>
-                            <h4 class="text-sm sm:text-base text-[#1a6f62] font-bold mb-2 leading-snug">
-                                Seminar Kewirausahaan Pelajar Nasional WPI
-                            </h4>
-                            <p class="text-xs sm:text-sm text-[#1a9b8a]">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Aula Pendidikan / Hybrid
-                            </p>
+                    </div>
+                    
+                    {{-- Event 2 --}}
+                    <div class="event-card bg-gradient-to-br from-white to-tosca-50/30 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-tosca-600 to-tosca-500 rounded-xl flex flex-col items-center justify-center text-white shadow-lg">
+                                <span class="text-xs font-bold uppercase tracking-wide">Okt</span>
+                                <span class="text-3xl font-bold leading-none">25</span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="text-sm text-tosca-600 font-medium flex items-center gap-1 mb-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    13:00 - Selesai
+                                </span>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                                    Kelas Online Bisnis Pemula WPI
+                                </h4>
+                                <p class="text-sm text-gray-600 flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                                    </svg>
+                                    Online Meeting (Zoom)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {{-- Event 3 --}}
+                    <div class="event-card bg-gradient-to-br from-white to-yellow-50/50 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-yellow-500 to-yellow-400 rounded-xl flex flex-col items-center justify-center text-gray-900 shadow-lg">
+                                <span class="text-xs font-bold uppercase tracking-wide">Mei</span>
+                                <span class="text-3xl font-bold leading-none">12</span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold mb-2">
+                                    COMING SOON
+                                </span>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                                    WPI Youth Entrepreneur Expo 2025
+                                </h4>
+                                <p class="text-sm text-gray-600 flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    Nasional (Offline & Online)
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-gradient-to-br from-[#f0fffe] to-[#e8fffe] border-l-4 border-[#FFD54F] p-5 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
-                    <div class="flex gap-4 sm:gap-6">
-                        <div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#1a9b8a] to-[#157d71] px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[70px] sm:min-w-[80px]">
-                            <span class="text-xs font-bold text-white uppercase">OKT</span>
-                            <span class="text-4xl sm:text-5xl font-bold text-[#FFD54F] leading-none">25</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-xs sm:text-sm text-[#1a9b8a] font-medium block mb-2">
-                                <i class="far fa-clock mr-1"></i> 13:00 - Selesai
-                            </span>
-                            <h4 class="text-sm sm:text-base text-[#1a6f62] font-bold mb-2 leading-snug">
-                                Kelas Online Bisnis Pemula WPI
-                            </h4>
-                            <p class="text-xs sm:text-sm text-[#1a9b8a]">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Online Meeting (Zoom)
-                            </p>
-                        </div>
-                    </div>
+                <div class="mt-8">
+                    <a href="#" class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold w-full justify-center group">
+                        LIHAT SEMUA KEGIATAN
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
-                
-                <div class="bg-gradient-to-br from-[#f0fffe] to-[#e8fffe] border-l-4 border-[#FFD54F] p-5 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
-                    <div class="flex gap-4 sm:gap-6">
-                        <div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#1a9b8a] to-[#157d71] px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[70px] sm:min-w-[80px]">
-                            <span class="text-xs font-bold text-white uppercase">MEI</span>
-                            <span class="text-4xl sm:text-5xl font-bold text-[#FFD54F] leading-none">12</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-xs sm:text-sm text-[#1a9b8a] font-medium block mb-2">
-                                <i class="far fa-clock mr-1"></i> - - -
-                            </span>
-                            <h4 class="text-sm sm:text-base text-[#1a6f62] font-bold mb-2 leading-snug">
-                                WPI Youth Entrepreneur Expo 2025
-                            </h4>
-                            <p class="text-xs sm:text-sm text-[#1a9b8a]">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Nasional (Offline & Online)
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="#" class="inline-block bg-gradient-to-r from-[#1a9b8a] to-[#157d71] text-white px-6 sm:px-8 md:px-10 py-2.5 md:py-3 rounded-full font-bold text-xs sm:text-sm uppercase transition-all hover:shadow-lg hover:shadow-[#1a9b8a]/30 hover:-translate-y-0.5">
-                    KEGIATAN LAINNYA
-                </a>
             </div>
         </div>
     </div>
 </section>
 
 {{-- KEGIATAN KAMI SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-800 font-bold text-center mb-8 md:mb-12 lg:mb-16">
-            Kegiatan Kami
-        </h2>
+<section class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-bold tracking-wider mb-4">
+                DOKUMENTASI
+            </span>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Kegiatan <span class="gradient-text">Kami</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Rekam jejak perjalanan dan pencapaian WPI dalam membentuk generasi wirausaha Indonesia
+            </p>
+        </div>
         
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{-- Activity Card 1 --}}
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col">
-                <div class="relative h-56 sm:h-60 md:h-64 group">
-                    <img src="{{ asset('images/activity1.png') }}" alt="Seminar Kewirausahaan Pelajar WPI" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <button class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <i class="fas fa-play text-xl sm:text-2xl text-gray-800 ml-1"></i>
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="relative h-64 group overflow-hidden">
+                    <img src="{{ asset('images/activity1.png') }}" alt="Seminar Kewirausahaan Pelajar WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
+                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
+                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
-                <div class="p-5 sm:p-6 flex flex-col flex-grow">
-                    <h3 class="text-lg sm:text-xl text-gray-800 font-bold mb-3">
-                        Seminar Kewirausahaan Pelajar Nasional
-                    </h3>
-                    <p class="text-sm text-gray-600 mb-4 flex-grow">
-                        Aula Pendidikan, 18 Oktober 2025
-                    </p>
-                    <div class="mt-auto">
-                        <span class="inline-block bg-[#FFD700] text-gray-800 px-4 py-1.5 rounded-full text-xs font-bold">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
                             3 MIN
                         </span>
+                        <span class="text-sm text-gray-500">18 Oktober 2025</span>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        Seminar Kewirausahaan Pelajar Nasional
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Aula Pendidikan, Jakarta
+                    </p>
                 </div>
             </div>
             
             {{-- Activity Card 2 --}}
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col">
-                <div class="relative h-56 sm:h-60 md:h-64 group">
-                    <img src="{{ asset('images/activity2.png') }}" alt="Pelatihan Bisnis Digital WPI" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <button class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <i class="fas fa-play text-xl sm:text-2xl text-gray-800 ml-1"></i>
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="relative h-64 group overflow-hidden">
+                    <img src="{{ asset('images/activity2.png') }}" alt="Pelatihan Bisnis Digital WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
+                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
+                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
-                <div class="p-5 sm:p-6 flex flex-col flex-grow">
-                    <h3 class="text-lg sm:text-xl text-gray-800 font-bold mb-3">
-                        Pelatihan Bisnis Digital untuk Pelajar
-                    </h3>
-                    <p class="text-sm text-gray-600 mb-4 flex-grow">
-                        Pelatihan kewirausahaan berbasis digital untuk meningkatkan kreativitas dan produktivitas
-                        pelajar serta mahasiswa WPI di berbagai daerah.
-                    </p>
-                    <div class="mt-auto">
-                        <span class="inline-block bg-[#FFD700] text-gray-800 px-4 py-1.5 rounded-full text-xs font-bold">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
                             3 MIN
                         </span>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        Pelatihan Bisnis Digital untuk Pelajar
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Pelatihan kewirausahaan berbasis digital untuk meningkatkan kreativitas dan produktivitas pelajar serta mahasiswa WPI.
+                    </p>
                 </div>
             </div>
             
             {{-- Activity Card 3 --}}
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col">
-                <div class="relative h-56 sm:h-60 md:h-64 group">
-                    <img src="{{ asset('images/activity3.png') }}" alt="Leadership Camp WPI" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <button class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <i class="fas fa-play text-xl sm:text-2xl text-gray-800 ml-1"></i>
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="relative h-64 group overflow-hidden">
+                    <img src="{{ asset('images/activity3.png') }}" alt="Leadership Camp WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
+                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
+                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
-                <div class="p-5 sm:p-6 flex flex-col flex-grow">
-                    <h3 class="text-lg sm:text-xl text-gray-800 font-bold mb-3">
-                        Leadership Camp & Entrepreneur Mindset WPI
-                    </h3>
-                    <p class="text-sm text-gray-600 mb-4 flex-grow">
-                        Program pengembangan kepemimpinan dan pola pikir wirausaha bagi pelajar dan mahasiswa
-                        sebagai calon pemimpin masa depan.
-                    </p>
-                    <div class="mt-auto">
-                        <span class="inline-block bg-[#FFD700] text-gray-800 px-4 py-1.5 rounded-full text-xs font-bold">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
                             3 MIN
                         </span>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        Leadership Camp & Entrepreneur Mindset WPI
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Program pengembangan kepemimpinan dan pola pikir wirausaha bagi pelajar dan mahasiswa sebagai calon pemimpin masa depan.
+                    </p>
                 </div>
             </div>
         </div>
@@ -331,104 +821,249 @@
 </section>
 
 {{-- BENEFITS SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8 md:mb-12">
-            <h2 class="text-xl sm:text-2xl md:text-3xl text-[#1a9b8a] mb-2 font-bold">Temukan beragam manfaat</h2>
-            <p class="text-sm sm:text-base md:text-lg text-[#1a9b8a] font-semibold">untuk akselerasi langkahmu</p>
+<section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(20,184,166,0.05)_0%,transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(250,204,21,0.05)_0%,transparent_50%)]"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-tosca-50 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-4">
+                MANFAAT BERGABUNG
+            </span>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Temukan Beragam <span class="gradient-text">Manfaat</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                untuk akselerasi langkahmu menuju kesuksesan berwirausaha
+            </p>
         </div>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
-            <div class="bg-white p-6 sm:p-7 md:p-8 rounded-xl text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/30 border-2 border-gray-200 hover:border-accent relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-benefits">
-                <div class="mb-3 md:mb-4">
-                    <i class="fas fa-network-wired text-3xl sm:text-4xl md:text-5xl text-[#1a9b8a]"></i>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {{-- Benefit 1 --}}
+            <div class="benefit-card p-8 rounded-2xl text-center group">
+                <div class="benefit-icon mx-auto mb-6">
+                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
                 </div>
-                <h3 class="text-base sm:text-lg md:text-xl text-accent mb-3 md:mb-4 font-bold">Jaringan Bisnis</h3>
-                <p class="text-sm md:text-base text-gray-600 leading-relaxed">Akses ke komunitas wirausaha pelajar yang luas di seluruh Indonesia.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Jaringan Bisnis</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Akses ke komunitas wirausaha pelajar yang luas di seluruh Indonesia
+                </p>
             </div>
             
-            <div class="bg-white p-6 sm:p-7 md:p-8 rounded-xl text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/30 border-2 border-gray-200 hover:border-accent relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-benefits">
-                <div class="mb-3 md:mb-4">
-                    <i class="fas fa-user-tie text-3xl sm:text-4xl md:text-5xl text-[#1a9b8a]"></i>
+            {{-- Benefit 2 --}}
+            <div class="benefit-card p-8 rounded-2xl text-center group">
+                <div class="benefit-icon mx-auto mb-6">
+                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
                 </div>
-                <h3 class="text-base sm:text-lg md:text-xl text-accent mb-3 md:mb-4 font-bold">Mentoring</h3>
-                <p class="text-sm md:text-base text-gray-600 leading-relaxed">Bimbingan dari pengusaha dan mentor berpengalaman.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Mentoring</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Bimbingan dari pengusaha dan mentor berpengalaman
+                </p>
             </div>
             
-            <div class="bg-white p-6 sm:p-7 md:p-8 rounded-xl text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/30 border-2 border-gray-200 hover:border-accent relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-benefits">
-                <div class="mb-3 md:mb-4">
-                    <i class="fas fa-calendar-alt text-3xl sm:text-4xl md:text-5xl text-[#1a9b8a]"></i>
+            {{-- Benefit 3 --}}
+            <div class="benefit-card p-8 rounded-2xl text-center group">
+                <div class="benefit-icon mx-auto mb-6">
+                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
                 </div>
-                <h3 class="text-base sm:text-lg md:text-xl text-accent mb-3 md:mb-4 font-bold">Akses ke Acara & Pelatihan</h3>
-                <p class="text-sm md:text-base text-gray-600 leading-relaxed">Kesempatan mengikuti seminar dan workshop bisnis eksklusif.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Akses ke Acara & Pelatihan</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Kesempatan mengikuti seminar dan workshop bisnis eksklusif
+                </p>
             </div>
             
-            <div class="bg-white p-6 sm:p-7 md:p-8 rounded-xl text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/30 border-2 border-gray-200 hover:border-accent relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-benefits">
-                <div class="mb-3 md:mb-4">
-                    <i class="fas fa-handshake text-3xl sm:text-4xl md:text-5xl text-[#1a9b8a]"></i>
+            {{-- Benefit 4 --}}
+            <div class="benefit-card p-8 rounded-2xl text-center group">
+                <div class="benefit-icon mx-auto mb-6">
+                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
                 </div>
-                <h3 class="text-base sm:text-lg md:text-xl text-accent mb-3 md:mb-4 font-bold">Advokasi & Dukungan</h3>
-                <p class="text-sm md:text-base text-gray-600 leading-relaxed">Representasi bisnis di forum lokal dan nasional.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Advokasi & Dukungan</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Representasi bisnis di forum lokal dan nasional
+                </p>
             </div>
         </div>
     </div>
 </section>
 
 {{-- TESTIMONIAL SECTION --}}
-<section class="py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-testimonial">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
-            <div class="order-2 md:order-1">
-                <img src="{{ asset('images/testimoni.png') }}" alt="Testimonial" class="w-full rounded-xl shadow-xl shadow-accent/20">
+<section class="py-20 lg:py-32 bg-gradient-to-br from-tosca-600 via-tosca-500 to-tosca-400 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 right-20 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="order-2 lg:order-1 relative">
+                <div class="absolute -top-6 -left-6 w-24 h-24 bg-yellow-400 rounded-2xl opacity-20"></div>
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-2xl opacity-10"></div>
+                <img src="{{ asset('images/testimoni.png') }}" alt="Testimonial" class="relative w-full rounded-3xl shadow-2xl border-4 border-white/20">
             </div>
-            <div class="order-1 md:order-2">
-                <img src="https://md-aqil.github.io/images/quote.png" alt="Quote" class="w-10 sm:w-12 md:w-16 mb-4 md:mb-5" style="filter: hue-rotate(160deg) saturate(1.5);">
-                <p class="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600 mb-4 md:mb-5 italic">"Bergabung dengan WPI telah memberikan akselerasi yang signifikan bagi bisnis saya. Melalui program mentoring dan networking, saya mendapatkan akses ke mitra baru dan peluang pasar yang lebih luas. Selain itu, kolaborasi yang terjalin dengan anggota lain memberikan insight berharga dalam mengembangkan strategi bisnis yang lebih efektif. WPI benar-benar menjadi wadah yang tepat bagi para pelajar yang ingin mengembangkan jiwa kewirausahaan."</p>
-                <p class="text-base sm:text-lg md:text-xl font-semibold text-accent">Ahmad Rizki Pratama</p>
+            
+            <div class="order-1 lg:order-2">
+                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-yellow-300 rounded-full text-sm font-bold tracking-wider mb-6">
+                    TESTIMONI
+                </span>
+                
+                <div class="mb-8">
+                    <svg class="w-16 h-16 text-yellow-300 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                </div>
+                
+                <p class="text-xl lg:text-2xl text-white leading-relaxed mb-8 font-light">
+                    Bergabung dengan WPI telah memberikan akselerasi yang signifikan bagi bisnis saya. Melalui program mentoring dan networking, saya mendapatkan akses ke mitra baru dan peluang pasar yang lebih luas.
+                </p>
+                
+                <div class="flex items-center gap-4">
+                    <div class="w-1 h-16 bg-yellow-400 rounded-full"></div>
+                    <div>
+                        <p class="text-xl font-bold text-white">Ahmad Rizki Pratama</p>
+                        <p class="text-tosca-100">Founder & CEO, StartUp Digital</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+{{-- CTA SECTION --}}
+<section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Siap Memulai <span class="gradient-text">Perjalanan Wirausaha</span> Anda?
+        </h2>
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Bergabunglah dengan ribuan pelajar dan mahasiswa yang telah memulai perjalanan kewirausahaan mereka bersama WPI
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+                DAFTAR SEKARANG
+                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+            <a href="#" class="btn-secondary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold">
+                HUBUNGI KAMI
+            </a>
+        </div>
+    </div>
+</section>
+
 {{-- FOOTER --}}
-<footer class="bg-gradient-to-r from-[#1a9b8a] to-[#157d71] text-white py-8 sm:py-10 md:py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-6 md:gap-8 mb-6 md:mb-8">
+<footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 lg:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-tosca-500 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-12 lg:gap-16 mb-12">
+            {{-- Column 1 --}}
             <div>
-                <h3 class="text-xl sm:text-2xl mb-3 sm:mb-4 text-[#FFD54F]">WPI</h3>
-                <p class="leading-relaxed text-sm sm:text-base text-gray-100">Wirausaha Pelajar Indonesia adalah komunitas pelajar dan mahasiswa yang berfokus pada pemberdayaan ekonomi, menciptakan kolaborasi antar anggota, dan mendorong inovasi untuk mencapai kesuksesan bersama.</p>
-            </div>
-            
-            <div>
-                <p class="mb-2 sm:mb-3 text-sm sm:text-base text-gray-100"><strong class="text-[#FFD54F]">Alamat:</strong><br>Jl. Contoh No. 123, Jakarta Pusat</p>
-                <p class="mb-2 sm:mb-3 text-sm sm:text-base text-gray-100"><strong class="text-[#FFD54F]">Phone:</strong> +62 856-9781-8910</p>
-                <p class="text-sm sm:text-base text-gray-100"><strong class="text-[#FFD54F]">Email:</strong> Info.wpi.pusat@gmail.com</p>
-            </div>
-            
-            <div>
-                <h4 class="text-base sm:text-lg font-bold text-[#FFD54F] mb-3 sm:mb-4">Ikuti Kami</h4>
-                <div class="flex gap-3 sm:gap-4">
-                    <a href="https://www.facebook.com/wirausahapelajarindonesia" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:bg-[#FFD54F] hover:text-[#1a9b8a] hover:scale-110">
-                        <i class="fab fa-facebook-f"></i>
+                <div class="mb-6">
+                    <h3 class="font-display text-3xl font-bold gradient-text-yellow mb-2">WPI</h3>
+                    <p class="text-tosca-300 font-semibold">Wirausaha Pelajar Indonesia</p>
+                </div>
+                <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+                    Komunitas pelajar dan mahasiswa yang berfokus pada pemberdayaan ekonomi, menciptakan kolaborasi antar anggota, dan mendorong inovasi untuk mencapai kesuksesan bersama.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/wirausahapelajarindonesia" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        <i class="fab fa-facebook-f text-lg"></i>
                     </a>
-                    <a href="https://www.instagram.com/wirausahapelajar/" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:bg-[#FFD54F] hover:text-[#1a9b8a] hover:scale-110">
-                        <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/wirausahapelajar/" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        <i class="fab fa-instagram text-lg"></i>
                     </a>
-                    <a href="" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:bg-[#FFD54F] hover:text-[#1a9b8a] hover:scale-110">
-                        <i class="fab fa-twitter"></i>
+                    <a href="" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        <i class="fab fa-twitter text-lg"></i>
                     </a>
-                    <a href="https://www.youtube.com/@wirausahapelajarindonesia6565" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:bg-[#FFD54F] hover:text-[#1a9b8a] hover:scale-110">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://www.youtube.com/@wirausahapelajarindonesia6565" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        <i class="fab fa-youtube text-lg"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:bg-[#FFD54F] hover:text-[#1a9b8a] hover:scale-110">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="#" class="social-link w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                        <i class="fab fa-linkedin-in text-lg"></i>
                     </a>
                 </div>
             </div>
+            
+            {{-- Column 2 --}}
+            <div>
+                <h4 class="text-yellow-400 font-bold text-lg mb-6 uppercase tracking-wider">Kontak</h4>
+                <div class="space-y-4 text-gray-300">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-tosca-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <p>Jl. Contoh No. 123,<br>Jakarta Pusat</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-tosca-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <p>+62 856-9781-8910</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-tosca-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <p>Info.wpi.pusat@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            {{-- Column 3 --}}
+            <div>
+                <h4 class="text-yellow-400 font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3 text-gray-300">
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Tentang Kami
+                    </a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Program
+                    </a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Kegiatan
+                    </a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Gabung
+                    </a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Kontak
+                    </a></li>
+                </ul>
+            </div>
         </div>
         
-        <div class="text-center pt-4 sm:pt-5 border-t border-white/20">
-            <p class="text-xs sm:text-sm text-gray-200">&copy; 2026 Wirausaha Pelajar Indonesia. All Rights Reserved.</p>
+        <div class="pt-8 border-t border-white/10 text-center">
+            <p class="text-gray-400">
+                &copy; 2026 <span class="text-yellow-400 font-semibold">Wirausaha Pelajar Indonesia</span>. All Rights Reserved.
+            </p>
         </div>
     </div>
 </footer>

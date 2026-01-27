@@ -15,6 +15,11 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="@yield('og_image')">
 
+    {{-- Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     {{-- Tailwind CSS CDN --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,195 +27,413 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a9b8a',
-                        'primary-dark': '#157d71',
-                        'primary-darker': '#0f7d73',
-                        secondary: '#FFD54F',
-                        'secondary-light': '#FFEB99',
-                        accent: '#2DBFB8',
-                        'accent-dark': '#25A8A2',
-                        navy: '#1434A4',
-                        'navy-dark': '#0d1b4d',
-                        gold: '#F3C43D',
+                        'tosca-50': '#f0fdfc',
+                        'tosca-100': '#ccfbf6',
+                        'tosca-200': '#99f6ea',
+                        'tosca-300': '#5eead4',
+                        'tosca-400': '#2dd4bf',
+                        'tosca-500': '#14b8a6',
+                        'tosca-600': '#0d9488',
+                        'tosca-700': '#0f766e',
+                        'tosca-800': '#115e59',
+                        'tosca-900': '#134e4a',
+                        
+                        'yellow-50': '#fefce8',
+                        'yellow-100': '#fef9c3',
+                        'yellow-200': '#fef08a',
+                        'yellow-300': '#fde047',
+                        'yellow-400': '#facc15',
+                        'yellow-500': '#eab308',
+                        'yellow-600': '#ca8a04',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'Georgia', 'serif'],
+                        'sans': ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        @layer utilities {
-            .bg-gradient-visi {
-                background: linear-gradient(135deg, #1a9b8a 0%, #157d71 100%);
-            }
-            .bg-gradient-footer {
-                background: linear-gradient(135deg, #0d1b4d 0%, #1434A4 50%, #0a2d5c 100%);
-            }
-            .bg-gradient-benefits {
-                background: linear-gradient(135deg, #1434A4 0%, #2DBFB8 100%);
-            }
-            .bg-gradient-testimonial {
-                background: linear-gradient(135deg, rgba(20, 52, 164, 0.05) 0%, rgba(45, 191, 184, 0.08) 50%, rgba(243, 196, 61, 0.05) 100%);
-            }
-            .text-gradient {
-                background: linear-gradient(135deg, #1434A4 0%, #2DBFB8 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
+        * {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navbar Backdrop Blur */
+        .navbar-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(15, 118, 110, 0.95);
+        }
+        
+        /* Update pada bagian Dropdown Animation */
+        .dropdown-menu {
+            display: block; /* Pastikan selalu render tapi tersembunyi */
+            pointer-events: none; /* Mencegah interaksi saat sembunyi */
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto; /* Aktifkan interaksi saat muncul */
+        }
+                
+        /* Mobile Menu Slide */
+        .mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%); /* Gunakan persentase agar lebih aman */
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0) !important;
+        }
+        
+        /* Hamburger Animation */
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Smooth Link Hover */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #facc15, #fde047);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Social Icon Hover */
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Join Button Glow */
+        .btn-join {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-join::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-join:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-join:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.4);
+        }
+        
+        /* Dropdown Item Hover */
+        .dropdown-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #facc15, #fde047);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .dropdown-item:hover {
+            padding-left: 1.75rem;
+            background: rgba(13, 148, 136, 0.3);
+        }
+        
+        /* Mobile Dropdown */
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-content.active {
+            max-height: 500px;
+        }
+        
+        .mobile-dropdown-toggle svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle.active svg {
+            transform: rotate(180deg);
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    @stack('styles')
 </head>
-<body class="font-sans text-gray-800 leading-relaxed">
+<body class="font-sans text-gray-800 leading-relaxed antialiased">
 
     {{-- NAVBAR --}}
-    <header class="bg-primary shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center py-3">
+    <header class="navbar-blur shadow-lg sticky top-0 z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                {{-- Logo --}}
                 <div class="flex items-center gap-4">
-                    <a href="/" class="flex items-center gap-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="WPI" class="h-14 w-auto">
-                        <span class="hidden lg:block text-white text-xs font-bold uppercase leading-tight max-w-[150px]">
-                            WIRAUSAHA PELAJAR INDONESIA
-                        </span>
+                    <a href="/" class="flex items-center gap-3 group">
+                        <div class="relative">
+                            <img src="{{ asset('images/logo.png') }}" alt="WPI" class="h-14 w-auto transition-transform group-hover:scale-105">
+                            <div class="absolute -inset-1 bg-yellow-400 rounded-full blur opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                        </div>
+                        <div class="hidden lg:block">
+                            <span class="block text-white text-sm font-bold uppercase tracking-wide">
+                                Wirausaha Pelajar
+                            </span>
+                            <span class="block text-yellow-300 text-xs font-semibold uppercase tracking-wider">
+                                Indonesia
+                            </span>
+                        </div>
                     </a>
                 </div>
 
-                <button class="lg:hidden flex flex-col p-1 gap-1" id="hamburger">
-                    <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+                {{-- Hamburger Menu (Mobile) --}}
+                <button class="lg:hidden hamburger flex flex-col gap-1.5 p-2" id="hamburger">
+                    <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="w-6 h-0.5 bg-white rounded-full"></span>
                 </button>
 
-                <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 mx-8" id="navMenu">
-                    <div class="relative group dropdown">
-                        <a href="#" class="flex items-center gap-2 text-white font-medium text-sm hover:text-secondary transition-colors dropdown-toggle">
+                {{-- Desktop Navigation --}}
+                <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 mx-8">
+                    {{-- Dropdown: Tentang Kami --}}
+                    <div class="relative dropdown group py-4"> {{-- Tambah padding py-4 sebagai jembatan hover --}}
+                        <a href="#" class="nav-link flex items-center gap-2 text-white font-semibold text-sm">
                             Tentang Kami
-                            <span class="text-xs group-hover:rotate-180 transition-transform duration-300">▼</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
                         </a>
-                        <div class="absolute top-full left-0 mt-2 min-w-[200px] bg-primary-dark rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 dropdown-menu">
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary first:rounded-t-lg last:rounded-b-lg">Sejarah</a>
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary">Struktur Organisasi</a>
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary">Visi dan Misi</a>
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary">Tugas dan Fungsi</a>
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary">Program WPI</a>
-                            <a href="#" class="block px-5 py-3 text-white text-sm hover:bg-primary hover:pl-6 transition-all border-l-3 border-transparent hover:border-secondary last:rounded-b-lg">Tujuan WPI</a>
+                        
+                        {{-- Menu Dropdown --}}
+                        <div class="dropdown-menu absolute top-full left-0 min-w-[220px] bg-tosca-800 rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl">Sejarah</a>
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Struktur Organisasi</a>
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Visi dan Misi</a>
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Tugas dan Fungsi</a>
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Program WPI</a>
+                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl">Tujuan WPI</a>
                         </div>
                     </div>
-                    <a href="#" class="text-white font-medium text-sm hover:text-secondary transition-colors">Berita dan Kegiatan</a>
-                    <a href="#" class="text-white font-medium text-sm hover:text-secondary transition-colors">Kontak</a>
+                    
+                    <a href="#" class="nav-link text-white font-semibold text-sm py-2">Berita dan Kegiatan</a>
+                    <a href="#" class="nav-link text-white font-semibold text-sm py-2">Kontak</a>
                 </nav>
 
-                <div class="hidden lg:flex items-center gap-4">
-                    <div class="flex items-center gap-3 mr-2">
-                        <a href="https://instagram.com" target="_blank" class="text-white w-7 h-7 flex items-center justify-center hover:bg-secondary/20 hover:text-secondary rounded transition-all hover:-translate-y-0.5">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12c0-3.403 2.759-6.162 6.162-6.162 3.403 0 6.162 2.759 6.162 6.162 0 3.403-2.759 6.162-6.162 6.162-3.403 0-6.162-2.759-6.162-6.162zm2.988 0c0 1.775 1.447 3.224 3.224 3.224 1.775 0 3.224-1.447 3.224-3.224 0-1.773-1.449-3.224-3.224-3.224-1.774 0-3.224 1.451-3.224 3.224zm9.776-6.341c0 .795.645 1.44 1.44 1.44.795 0 1.44-.645 1.44-1.44 0-.795-.645-1.44-1.44-1.44-.795 0-1.44.645-1.44 1.44z"/>
-                            </svg>
+                {{-- Right Side: Social & CTA --}}
+                <div class="hidden lg:flex items-center gap-6">
+                    {{-- Social Icons --}}
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.facebook.com/wirausahapelajarindonesia" target="_blank" class="social-icon w-9 h-9 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                            <i class="fab fa-facebook-f text-sm"></i>
                         </a>
-                        <a href="https://youtube.com" target="_blank" class="text-white w-7 h-7 flex items-center justify-center hover:bg-secondary/20 hover:text-secondary rounded transition-all hover:-translate-y-0.5">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
+                        <a href="https://www.instagram.com/wirausahapelajar/" target="_blank" class="social-icon w-9 h-9 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@wirausahapelajarindonesia6565" target="_blank" class="social-icon w-9 h-9 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 border border-white/20">
+                            <i class="fab fa-youtube text-sm"></i>
                         </a>
                     </div>
 
-                    <a href="#" class="bg-secondary text-primary px-7 py-2.5 rounded-md font-bold text-xs uppercase transition-all hover:bg-transparent hover:text-secondary border-2 border-secondary hover:shadow-lg hover:shadow-secondary/30">Join Now</a>
+                    {{-- Join Button --}}
+                    <a href="#" class="btn-join relative bg-yellow-400 text-gray-900 px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide overflow-hidden">
+                        <span class="relative z-10">Join Now</span>
+                    </a>
                 </div>
             </div>
-
-            {{-- Mobile Menu --}}
-            <nav class="lg:hidden fixed left-[-100%] top-20 w-full bg-primary-dark shadow-2xl transition-all duration-300 z-40" id="mobileMenu">
-                <div class="py-5">
-                    <div class="dropdown-mobile">
-                        <a href="#" class="block px-6 py-4 text-white font-medium text-sm border-b border-white/10 dropdown-toggle-mobile">
-                            Tentang Kami <span class="float-right">▼</span>
-                        </a>
-                        <div class="dropdown-content-mobile max-h-0 overflow-hidden transition-all duration-300 bg-[#0f8178]">
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Sejarah</a>
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Struktur Organisasi</a>
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Visi dan Misi</a>
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Tugas dan Fungsi</a>
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Program WPI</a>
-                            <a href="#" class="block px-8 py-3 text-white text-xs hover:bg-primary">Tujuan WPI</a>
-                        </div>
-                    </div>
-                    <a href="#" class="block px-6 py-4 text-white font-medium text-sm border-b border-white/10">Berita dan Kegiatan</a>
-                    <a href="#" class="block px-6 py-4 text-white font-medium text-sm border-b border-white/10">Kontak</a>
-                    
-                    <div class="flex items-center justify-center gap-3 py-4 border-y border-white/10 my-4">
-                        <a href="https://instagram.com" class="text-white w-7 h-7 flex items-center justify-center">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12c0-3.403 2.759-6.162 6.162-6.162 3.403 0 6.162 2.759 6.162 6.162 0 3.403-2.759 6.162-6.162 6.162-3.403 0-6.162-2.759-6.162-6.162zm2.988 0c0 1.775 1.447 3.224 3.224 3.224 1.775 0 3.224-1.447 3.224-3.224 0-1.773-1.449-3.224-3.224-3.224-1.774 0-3.224 1.451-3.224 3.224zm9.776-6.341c0 .795.645 1.44 1.44 1.44.795 0 1.44-.645 1.44-1.44 0-.795-.645-1.44-1.44-1.44-.795 0-1.44.645-1.44 1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="https://youtube.com" class="text-white w-7 h-7 flex items-center justify-center">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <div class="px-6">
-                        <a href="#" class="block text-center bg-secondary text-primary px-7 py-2.5 rounded-md font-bold text-xs uppercase">Join Now</a>
-                    </div>
-                </div>
-            </nav>
         </div>
     </header>
+
+    {{-- Mobile Menu --}}
+    <div class="mobile-menu fixed top-0 right-0 h-full w-full max-w-sm bg-tosca-800 shadow-2xl z-40 transform translate-x-full" id="mobileMenu">
+        <div class="flex flex-col h-full">
+            {{-- Mobile Menu Header --}}
+            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                <div>
+                    <h3 class="text-white font-bold text-lg">Menu</h3>
+                    <p class="text-tosca-200 text-sm">Navigasi WPI</p>
+                </div>
+                <button class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-white/20 transition-colors" id="closeMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            {{-- Mobile Menu Content --}}
+            <div class="flex-1 overflow-y-auto py-6">
+                {{-- Dropdown: Tentang Kami --}}
+                <div class="border-b border-white/10">
+                    <button class="mobile-dropdown-toggle w-full flex items-center justify-between px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors" data-dropdown="tentang">
+                        <span>Tentang Kami</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content bg-tosca-900/50" id="dropdown-tentang">
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Sejarah</a>
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Struktur Organisasi</a>
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Visi dan Misi</a>
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Tugas dan Fungsi</a>
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Program WPI</a>
+                        <a href="#" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Tujuan WPI</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Berita dan Kegiatan</a>
+                <a href="#" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Kontak</a>
+            </div>
+
+            {{-- Mobile Menu Footer --}}
+            <div class="p-6 border-t border-white/10 bg-tosca-900/50">
+                {{-- Social Icons --}}
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <a href="https://www.facebook.com/wirausahapelajarindonesia" class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 transition-all">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/wirausahapelajar/" class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@wirausahapelajarindonesia6565" class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-yellow-400 hover:text-gray-900 transition-all">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+                {{-- Join Button --}}
+                <a href="#" class="block text-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-yellow-500 transition-colors">
+                    Join Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- Overlay for Mobile Menu --}}
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-30" id="overlay"></div>
 
     @yield('content')
 
     <script>
-        // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
 
-        hamburger.addEventListener('click', function() {
-            const spans = this.querySelectorAll('span');
-            
-            if (mobileMenu.style.left === '0px') {
-                mobileMenu.style.left = '-100%';
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.remove('invisible', 'opacity-0');
+            overlay.classList.add('visible', 'opacity-100');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.add('invisible', 'opacity-0');
+            overlay.classList.remove('visible', 'opacity-100');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
             } else {
-                mobileMenu.style.left = '0';
-                spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+                openMobileMenu();
             }
         });
 
-        // Dropdown menu on mobile
-        const dropdownToggleMobile = document.querySelector('.dropdown-toggle-mobile');
-        const dropdownContentMobile = document.querySelector('.dropdown-content-mobile');
-        
-        if (dropdownToggleMobile) {
-            dropdownToggleMobile.addEventListener('click', function(e) {
+        closeMenu.addEventListener('click', closeMobileMenu);
+        overlay.addEventListener('click', closeMobileMenu);
+
+        const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-dropdown-toggle)');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Handle Mobile Dropdown Toggle
+        const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (dropdownContentMobile.style.maxHeight) {
-                    dropdownContentMobile.style.maxHeight = null;
-                } else {
-                    dropdownContentMobile.style.maxHeight = dropdownContentMobile.scrollHeight + 'px';
-                }
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdownContent = document.getElementById(`dropdown-${dropdownId}`);
+                
+                // Toggle active class
+                this.classList.toggle('active');
+                dropdownContent.classList.toggle('active');
             });
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = mobileMenu.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-
-            if (!isClickInsideNav && !isClickOnHamburger && mobileMenu.style.left === '0px') {
-                mobileMenu.style.left = '-100%';
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
         });
     </script>
 
+    @stack('scripts')
 </body>
 </html>
