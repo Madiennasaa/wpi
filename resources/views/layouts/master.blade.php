@@ -274,12 +274,12 @@
                         
                         {{-- Menu Dropdown --}}
                         <div class="dropdown-menu absolute top-full left-0 min-w-[220px] bg-tosca-800 rounded-xl shadow-2xl border border-white/10 overflow-hidden">
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl">Sejarah</a>
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Struktur Organisasi</a>
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Visi dan Misi</a>
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Tugas dan Fungsi</a>
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm">Program WPI</a>
-                            <a href="#" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl">Tujuan WPI</a>
+                            <a href="{{ route('pages.sejarah') }}" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl">Sejarah</a>
+                            <a href="{{ route('pages.struktur') }}" class="dropdown-item block px-5 py-3 text-white text-sm">Struktur Organisasi</a>
+                            <a href="{{ route('pages.visi') }}" class="dropdown-item block px-5 py-3 text-white text-sm">Visi dan Misi</a>
+                            <a href="{{ route('pages.tugas') }}" class="dropdown-item block px-5 py-3 text-white text-sm">Tugas dan Fungsi</a>
+                            <a href="{{ route('pages.program') }}" class="dropdown-item block px-5 py-3 text-white text-sm">Program WPI</a>
+                            <a href="{{ route('pages.tujuan') }}" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl">Tujuan WPI</a>
                         </div>
                     </div>
                     
