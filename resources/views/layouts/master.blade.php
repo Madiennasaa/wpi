@@ -77,8 +77,8 @@
         
         /* Update pada bagian Dropdown Animation */
         .dropdown-menu {
-            display: block; /* Pastikan selalu render tapi tersembunyi */
-            pointer-events: none; /* Mencegah interaksi saat sembunyi */
+            display: block;
+            pointer-events: none;
             transform: translateY(-10px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
@@ -89,13 +89,13 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-            pointer-events: auto; /* Aktifkan interaksi saat muncul */
+            pointer-events: auto;
         }
                 
         /* Mobile Menu Slide */
         .mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(100%); /* Gunakan persentase agar lebih aman */
+            transform: translateX(100%);
         }
 
         .mobile-menu.active {
@@ -119,7 +119,7 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
         
-        /* Smooth Link Hover */
+        /* Smooth Link Hover & Active State */
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
@@ -132,12 +132,31 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #facc15, #fde047);
+            background: #facc15;
             transition: width 0.3s ease;
         }
         
         .nav-link:hover::after {
             width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+            background: #facc15;
+        }
+        
+        .nav-link.active {
+            color: #fde047;
+        }
+        
+        /* Dropdown Active State */
+        .dropdown.active > a {
+            color: #fde047;
+        }
+        
+        .dropdown.active > a::after {
+            width: 100%;
+            background: #facc15;
         }
         
         /* Social Icon Hover */
@@ -192,7 +211,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, #facc15, #fde047);
+            background: #facc15;
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
@@ -264,8 +283,8 @@
                 {{-- Desktop Navigation --}}
                 <nav class="hidden lg:flex flex-1 items-center justify-center gap-8 mx-8">
                     {{-- Dropdown: Tentang Kami --}}
-                    <div class="relative dropdown group py-4"> {{-- Tambah padding py-4 sebagai jembatan hover --}}
-                        <a href="/" class="nav-link flex items-center gap-2 text-white font-semibold text-sm">
+                    <div class="relative dropdown group py-4 {{ request()->is('sejarah', 'struktur', 'visi-misi', 'tugas-fungsi', 'program', 'tujuan') ? 'active' : '' }}">
+                        <a href="/" class="nav-link flex items-center gap-2 text-white font-semibold text-sm {{ request()->is('sejarah', 'struktur', 'visi-misi', 'tugas-fungsi', 'program', 'tujuan') ? 'active' : '' }}">
                             Tentang Kami
                             <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -284,10 +303,10 @@
                     </div>
                     
                     <a href="{{ route('artikel.index') }}"
-                        class="nav-link text-white font-semibold text-sm py-2">
+                        class="nav-link text-white font-semibold text-sm py-2 {{ request()->routeIs('artikel.*') ? 'active' : '' }}">
                         Berita dan Kegiatan
                     </a>
-                    <a href="/kontak" class="nav-link text-white font-semibold text-sm py-2">Kontak</a>
+                    <a href="/kontak" class="nav-link text-white font-semibold text-sm py-2 {{ request()->is('kontak') ? 'active' : '' }}">Kontak</a>
                 </nav>
 
                 {{-- Right Side: Social & CTA --}}
@@ -306,7 +325,7 @@
                     </div>
 
                     {{-- Join Button --}}
-                    <a href="#" class="btn-join relative bg-yellow-400 text-gray-900 px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide overflow-hidden">
+                    <a href="https://wa.me/6285697818910" class="btn-join relative bg-yellow-400 text-gray-900 px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide overflow-hidden">
                         <span class="relative z-10">Join Now</span>
                     </a>
                 </div>
@@ -370,7 +389,7 @@
                 </div>
 
                 {{-- Join Button --}}
-                <a href="#" class="block text-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-yellow-500 transition-colors">
+                <a href="https://wa.me/6285697818910" class="block text-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-yellow-500 transition-colors">
                     Join Now
                 </a>
             </div>
@@ -383,7 +402,7 @@
     @yield('content')
 
     {{-- FOOTER --}}
-    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 lg:py-20 relative overflow-hidden">
+    <footer class="bg-gray-900 text-white py-16 lg:py-20 relative overflow-hidden">
         <div class="absolute inset-0 opacity-5">
             <div class="absolute top-0 left-0 w-96 h-96 bg-tosca-500 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
@@ -394,7 +413,7 @@
                 {{-- Column 1 --}}
                 <div>
                     <div class="mb-6">
-                        <h3 class="font-display text-3xl font-bold gradient-text-white mb-2">WPI</h3>
+                        <h3 class="font-display text-3xl font-bold text-white mb-2">WPI</h3>
                         <p class="text-tosca-300 font-semibold">Wirausaha Pelajar Indonesia</p>
                     </div>
                     <p class="text-gray-300 leading-relaxed mb-6 text-lg">
@@ -512,7 +531,6 @@
         const closeMenu = document.getElementById('closeMenu');
         const overlay = document.getElementById('overlay');
 
-        // Fungsi buka menu yang lebih aman
         function openMobileMenu() {
             mobileMenu.classList.add('active');
             overlay.classList.remove('invisible', 'opacity-0');
@@ -521,7 +539,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Fungsi tutup menu
         function closeMobileMenu() {
             mobileMenu.classList.remove('active');
             overlay.classList.add('invisible', 'opacity-0');
@@ -530,7 +547,6 @@
             document.body.style.overflow = '';
         }
 
-        // Toggle Hamburger
         hamburger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -547,7 +563,6 @@
         const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-dropdown-toggle)');
         mobileLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                
                 setTimeout(closeMobileMenu, 100);
             });
         });
@@ -561,7 +576,6 @@
                 const dropdownId = this.getAttribute('data-dropdown');
                 const dropdownContent = document.getElementById(`dropdown-${dropdownId}`);
                 
-                // Toggle icon rotasi dan konten
                 this.classList.toggle('active');
                 
                 if (dropdownContent) {

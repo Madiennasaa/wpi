@@ -50,30 +50,15 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .sidebar-link.active { 
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+            background: #f0fdfa;
             border-left: 4px solid #14b8a6;
             color: #0f766e;
             font-weight: 600;
         }
-        .gradient-border {
-            position: relative;
-            background: white;
-        }
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 12px;
-            padding: 2px;
-            background: linear-gradient(135deg, #14b8a6 0%, #f59e0b 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
     </style>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-tosca-50/30" x-data="{ sidebarOpen: false }">
+<body class="bg-gray-50" x-data="{ sidebarOpen: false }">
     <div class="flex min-h-screen">
         <!-- Overlay -->
         <div
@@ -87,7 +72,7 @@
             <!-- Logo Section -->
             <div class="p-6 border-b border-gray-100">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-tosca-500 to-sunshine-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-tosca-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                         WPI
                     </div>
                     <div>
@@ -103,7 +88,7 @@
                 
                 <a href="{{ route('admin.dashboard') }}" 
                    class="sidebar-link flex items-center gap-3 px-4 py-3.5 rounded-xl hover:bg-gray-50 transition-all group {{ request()->routeIs('admin.dashboard') ? 'active' : 'text-gray-600' }}">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-tosca-100 to-tosca-50 flex items-center justify-center text-tosca-600 group-hover:from-tosca-500 group-hover:to-sunshine-500 group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-tosca-100 flex items-center justify-center text-tosca-600 group-hover:bg-tosca-600 group-hover:text-white transition-all">
                         <i class="fa-solid fa-gauge-high"></i>
                     </div>
                     <span class="font-medium">Dashboard</span>
@@ -111,7 +96,7 @@
 
                 <a href="{{ route('admin.artikel.index') }}" 
                    class="sidebar-link flex items-center gap-3 px-4 py-3.5 rounded-xl hover:bg-gray-50 transition-all group {{ request()->routeIs('admin.artikel.*') ? 'active' : 'text-gray-600' }}">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sunshine-100 to-sunshine-50 flex items-center justify-center text-sunshine-600 group-hover:from-tosca-500 group-hover:to-sunshine-500 group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600 group-hover:bg-yellow-500 group-hover:text-white transition-all">
                         <i class="fa-solid fa-newspaper"></i>
                     </div>
                     <span class="font-medium">Kelola Artikel</span>
@@ -122,7 +107,7 @@
                 </div>
 
                 <a href="/" target="_blank" class="flex items-center gap-3 px-4 py-3.5 rounded-xl hover:bg-gray-50 transition-all text-gray-600 group">
-                    <div class="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-gradient-to-br group-hover:from-tosca-500 group-hover:to-sunshine-500 group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 group-hover:bg-gray-600 group-hover:text-white transition-all">
                         <i class="fa-solid fa-globe"></i>
                     </div>
                     <span class="font-medium">Lihat Website</span>
@@ -151,7 +136,7 @@
         <!-- Main Content -->
         <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- Header -->
-            <header class="h-20 bg-white/80 backdrop-blur-sm border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
+            <header class="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
                 <div class="lg:hidden">
                     <button
                         @click="sidebarOpen = !sidebarOpen"
@@ -161,7 +146,7 @@
                 </div>
 
                 <div class="hidden lg:block">
-                    <h2 class="text-lg font-bold bg-gradient-to-r from-tosca-600 to-sunshine-600 bg-clip-text text-transparent">
+                    <h2 class="text-lg font-bold text-tosca-700">
                         @yield('header_title', 'Dashboard')
                     </h2>
                 </div>
@@ -171,7 +156,7 @@
                         <p class="text-sm font-bold text-gray-800">{{ auth()->user()->name }}</p>
                         <p class="text-xs text-gray-500">Administrator</p>
                     </div>
-                    <div class="w-12 h-12 bg-gradient-to-br from-tosca-500 to-sunshine-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <div class="w-12 h-12 bg-tosca-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
                         {{ substr(auth()->user()->name, 0, 1) }}
                     </div>
                 </div>
@@ -180,9 +165,9 @@
             <!-- Content Area -->
             <div class="flex-1 overflow-x-hidden overflow-y-auto p-6 lg:p-10">
                 @if(session('success'))
-                <div class="mb-6 p-5 bg-gradient-to-r from-tosca-50 to-sunshine-50 border-l-4 border-tosca-500 rounded-xl shadow-sm flex justify-between items-center">
+                <div class="mb-6 p-5 bg-tosca-50 border-l-4 border-tosca-600 rounded-xl shadow-sm flex justify-between items-center">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-tosca-500 flex items-center justify-center text-white">
+                        <div class="w-10 h-10 rounded-lg bg-tosca-600 flex items-center justify-center text-white">
                             <i class="fa-solid fa-circle-check"></i>
                         </div>
                         <span class="text-sm font-semibold text-gray-700">{{ session('success') }}</span>

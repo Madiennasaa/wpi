@@ -337,7 +337,7 @@
             Bergabunglah dengan ribuan pelajar lainnya yang telah memulai perjalanan kewirausahaan mereka bersama WPI
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+            <a href="https://wa.me/6285697818910" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
                 GABUNG SEKARANG
                 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>

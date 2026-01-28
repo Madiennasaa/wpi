@@ -240,7 +240,7 @@
             Mari bergabung dan berkontribusi dalam mewujudkan visi dan misi WPI untuk masa depan Indonesia yang lebih baik
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+            <a href="https://wa.me/6285697818910" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
                 GABUNG SEKARANG
                 <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

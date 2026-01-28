@@ -273,6 +273,15 @@
     <div class="decorative-blob w-96 h-96 bg-yellow-400 top-20 -left-48"></div>
     <div class="decorative-blob w-80 h-80 bg-tosca-300 bottom-20 -right-40"></div>
     
+    <div class="absolute inset-0 z-0">
+        <img src="{{ asset('images/desc.jpg') }}" 
+             alt="Background" 
+             class="w-full h-full object-cover opacity-20 grayscale"> 
+        {{-- Tips: Gunakan opacity rendah agar teks tetap terbaca jelas --}}
+        
+        {{-- Overlay Gradient (Opsional: Agar transisi ke section bawah lebih halus) --}}
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-tosca-300/30"></div>
+    </div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
         <div class="max-w-4xl">
             <div class="mb-6 inline-block">
@@ -780,52 +789,52 @@
         
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {{-- Benefit 1 --}}
-            <div class="benefit-card p-8 rounded-2xl text-center group">
-                <div class="benefit-icon mx-auto mb-6">
-                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white border border-gray-200 p-8 rounded-2xl text-center group hover:border-tosca-300 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="benefit-icon w-16 h-16 mx-auto mb-6 bg-tosca-50 rounded-xl flex items-center justify-center group-hover:bg-tosca-100 group-hover:scale-110 transition-all duration-300">
+                    <svg class="w-8 h-8 text-tosca-600 group-hover:text-tosca-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Jaringan Bisnis</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-700 transition-colors duration-300">Jaringan Bisnis</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Akses ke komunitas wirausaha pelajar yang luas di seluruh Indonesia
                 </p>
             </div>
             
             {{-- Benefit 2 --}}
-            <div class="benefit-card p-8 rounded-2xl text-center group">
-                <div class="benefit-icon mx-auto mb-6">
-                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white border border-gray-200 p-8 rounded-2xl text-center group hover:border-tosca-300 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="benefit-icon w-16 h-16 mx-auto mb-6 bg-tosca-50 rounded-xl flex items-center justify-center group-hover:bg-tosca-100 group-hover:scale-110 transition-all duration-300">
+                    <svg class="w-8 h-8 text-tosca-600 group-hover:text-tosca-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Mentoring</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-700 transition-colors duration-300">Mentoring</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Bimbingan dari pengusaha dan mentor berpengalaman
                 </p>
             </div>
             
             {{-- Benefit 3 --}}
-            <div class="benefit-card p-8 rounded-2xl text-center group">
-                <div class="benefit-icon mx-auto mb-6">
-                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white border border-gray-200 p-8 rounded-2xl text-center group hover:border-tosca-300 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="benefit-icon w-16 h-16 mx-auto mb-6 bg-tosca-50 rounded-xl flex items-center justify-center group-hover:bg-tosca-100 group-hover:scale-110 transition-all duration-300">
+                    <svg class="w-8 h-8 text-tosca-600 group-hover:text-tosca-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Akses ke Acara & Pelatihan</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-700 transition-colors duration-300">Akses ke Acara & Pelatihan</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Kesempatan mengikuti seminar dan workshop bisnis eksklusif
                 </p>
             </div>
             
             {{-- Benefit 4 --}}
-            <div class="benefit-card p-8 rounded-2xl text-center group">
-                <div class="benefit-icon mx-auto mb-6">
-                    <svg class="w-8 h-8 text-tosca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white border border-gray-200 p-8 rounded-2xl text-center group hover:border-tosca-300 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="benefit-icon w-16 h-16 mx-auto mb-6 bg-tosca-50 rounded-xl flex items-center justify-center group-hover:bg-tosca-100 group-hover:scale-110 transition-all duration-300">
+                    <svg class="w-8 h-8 text-tosca-600 group-hover:text-tosca-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Advokasi & Dukungan</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-tosca-700 transition-colors duration-300">Advokasi & Dukungan</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Representasi bisnis di forum lokal dan nasional
                 </p>
@@ -886,7 +895,7 @@
             Bergabunglah dengan ribuan pelajar dan mahasiswa yang telah memulai perjalanan kewirausahaan mereka bersama WPI
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+            <a href="https://wa.me/6285697818910" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
                 DAFTAR SEKARANG
                 <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

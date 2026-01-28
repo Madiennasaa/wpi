@@ -348,7 +348,7 @@
             Mari bergabung dan berkontribusi dalam mewujudkan tujuan WPI untuk menciptakan generasi wirausaha Indonesia yang unggul
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+            <a href="https://wa.me/6285697818910" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
                 MULAI PERJALANAN
                 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>
