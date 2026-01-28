@@ -10,14 +10,12 @@ class HomeController extends Controller
     public function index()
     {
         $berita = Article::where('type', 'berita')
-            ->whereNotNull('published_at')
-            ->orderByDesc('published_at')
+            ->latest('id')
             ->take(3)
             ->get();
 
         $kegiatan = Article::where('type', 'kegiatan')
-            ->whereNotNull('published_at')
-            ->orderByDesc('published_at')
+            ->latest('id')
             ->take(3)
             ->get();
 

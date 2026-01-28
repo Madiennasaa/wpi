@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title', 'Tujuan WPI')
-@section('meta_description', 'Tujuan Wirausaha Pelajar Indonesia (WPI) dalam membangun jiwa kewirausahaan, kemandirian, dan daya saing pelajar Indonesia.')
-@section('meta_keywords', 'Tujuan WPI, Tujuan Wirausaha Pelajar Indonesia, kewirausahaan pelajar')
+@section('title', 'Program WPI')
+@section('meta_description', 'Program Wirausaha Pelajar Indonesia (WPI) dalam membina, mengembangkan, dan mencetak wirausaha muda pelajar Indonesia.')
+@section('meta_keywords', 'Program WPI, Program Wirausaha Pelajar Indonesia, kegiatan WPI, kewirausahaan pelajar')
 
 @push('styles')
 <style>
@@ -108,19 +108,19 @@
             <div class="flex items-center justify-center gap-2 text-tosca-100 text-sm mb-6">
                 <a href="/" class="hover:text-yellow-300 transition-colors">Beranda</a>
                 <i class="fas fa-chevron-right"></i>
-                <span class="text-yellow-300 font-semibold">Tujuan WPI</span>
+                <span class="text-yellow-300 font-semibold">Program WPI</span>
             </div>
             
             <span class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-yellow-300 rounded-full text-sm font-bold tracking-wider mb-6 border border-white/20">
-                TENTANG KAMI
+                PROGRAM KAMI
             </span>
             
             <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Tujuan <span class="text-yellow-300">WPI</span>
+                Program <span class="text-yellow-300">WPI</span>
             </h1>
             
             <p class="text-xl lg:text-2xl text-tosca-50 leading-relaxed font-light max-w-3xl mx-auto">
-                Arah dan cita-cita Wirausaha Pelajar Indonesia dalam mencetak generasi wirausaha muda
+                Rangkaian program unggulan Wirausaha Pelajar Indonesia dalam membentuk pelajar mandiri, kreatif, dan berjiwa wirausaha
             </p>
         </div>
     </div>
@@ -134,13 +134,14 @@
         </div>
         
         <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Enam Tujuan <span class="text-transparent bg-clip-text bg-gradient-to-r from-tosca-600 to-yellow-500">Utama WPI</span>
+            Program Unggulan <span class="text-transparent bg-clip-text bg-gradient-to-r from-tosca-600 to-yellow-500">WPI</span>
         </h2>
         
         <div class="w-24 h-1 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-8"></div>
         
         <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            WPI memiliki enam tujuan strategis yang menjadi kompas dalam setiap kegiatan dan program untuk membangun generasi wirausaha Indonesia yang tangguh dan berdaya saing
+            WPI menghadirkan berbagai program strategis dan berkelanjutan yang dirancang untuk membekali pelajar dengan pengetahuan,
+            keterampilan, dan pengalaman nyata di dunia kewirausahaan.
         </p>
     </div>
 </section>
@@ -167,9 +168,9 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
                                 <i class="fas fa-seedling text-2xl text-tosca-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Menumbuhkan Jiwa Kewirausahaan</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Program Edukasi Kewirausahaan</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Menumbuhkan jiwa kewirausahaan di kalangan pelajar dan mahasiswa Indonesia sejak dini.
+                                Program pembelajaran kewirausahaan bagi pelajar melalui seminar, workshop, dan pelatihan yang dirancang untuk menanamkan mindset wirausaha sejak dini.
                             </p>
                         </div>
                     </div>
@@ -187,9 +188,9 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
                                 <i class="fas fa-coins text-2xl text-yellow-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Kemandirian Ekonomi</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Inkubasi Bisnis Pelajar</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Mendorong kemandirian ekonomi pelajar melalui pengembangan usaha kreatif dan inovatif.
+                                Program pendampingan bagi pelajar yang telah memiliki ide atau usaha rintisan untuk dikembangkan menjadi bisnis yang berkelanjutan.
                             </p>
                         </div>
                     </div>
@@ -207,9 +208,9 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
                                 <i class="fas fa-chart-line text-2xl text-tosca-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Peningkatan Kapasitas</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Pelatihan Digital & Inovasi</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Meningkatkan kapasitas pelajar dalam kewirausahaan, kepemimpinan, dan manajemen usaha.
+                                Program peningkatan kemampuan pelajar dalam memanfaatkan teknologi digital, branding, dan pemasaran online untuk mendukung usaha mereka.
                             </p>
                         </div>
                     </div>
@@ -227,9 +228,10 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
                                 <i class="fas fa-trophy text-2xl text-yellow-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Generasi Berdaya Saing</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Event & Kompetisi Kewirausahaan</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Menciptakan generasi wirausaha muda yang inovatif, berdaya saing, dan berintegritas tinggi.
+                                Penyelenggaraan event, lomba, dan kegiatan kewirausahaan untuk menumbuhkan semangat kompetitif, kreativitas, dan inovasi pelajar.
+
                             </p>
                         </div>
                     </div>
@@ -247,9 +249,9 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
                                 <i class="fas fa-project-diagram text-2xl text-tosca-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Ekosistem Kolaboratif</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Kolaborasi & Jejaring Usaha</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Membangun ekosistem kewirausahaan pelajar yang kolaboratif, berkelanjutan, dan inklusif.
+                                Program kolaborasi dengan sekolah, komunitas, dunia usaha, dan instansi terkait untuk memperluas jaringan dan peluang bagi pelajar.
                             </p>
                         </div>
                     </div>
@@ -267,9 +269,9 @@
                             <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
                                 <i class="fas fa-hands-helping text-2xl text-yellow-600"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Kontribusi Sosial</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Program Sosial & Pengabdian</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                Mendorong kontribusi pelajar dalam pembangunan ekonomi dan sosial masyarakat Indonesia.
+                                Kegiatan kewirausahaan berbasis sosial yang mendorong pelajar berkontribusi nyata bagi masyarakat dan lingkungan sekitar.
                             </p>
                         </div>
                     </div>
@@ -293,7 +295,9 @@
                 Dampak Nyata WPI
             </h2>
             <div class="w-24 h-1 bg-gradient-to-r from-yellow-300 to-yellow-400 mx-auto rounded-full mb-6"></div>
-            <p class="text-tosca-50 text-lg">Pencapaian dalam mewujudkan tujuan organisasi</p>
+            <p class="text-tosca-50 text-lg">
+                Dampak dan capaian dari pelaksanaan program-program WPI di berbagai wilayah
+            </p>
         </div>
         
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

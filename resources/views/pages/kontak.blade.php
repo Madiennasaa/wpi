@@ -260,7 +260,6 @@
     </div>
 </section>
 
-{{-- MAP SECTION (Optional) --}}
 <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -271,16 +270,17 @@
         </div>
         
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-gray-100">
-            <div class="aspect-video bg-gradient-to-br from-tosca-100 to-yellow-100 flex items-center justify-center">
-                <div class="text-center">
-                    <i class="fas fa-map-marked-alt text-6xl text-tosca-400 mb-4"></i>
-                    <p class="text-gray-600 font-medium">
-                        Peta lokasi akan ditampilkan di sini
-                    </p>
-                    <p class="text-gray-500 text-sm mt-2">
-                        Jakarta, Indonesia
-                    </p>
-                </div>
+            {{-- Menggunakan aspect-video agar tingginya proporsional secara otomatis --}}
+            <div class="aspect-video w-full">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.510316702213!2d106.83009182127564!3d-6.180576264709727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1769521290185!5m2!1sid!2sid" {{-- Pastikan pakai URL embed asli kamu di sini --}}
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </div>

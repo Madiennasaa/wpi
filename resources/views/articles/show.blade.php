@@ -176,11 +176,7 @@
                 {{-- Content Body --}}
                 <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg border border-gray-100">
                     <div class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-                        @foreach (preg_split("/\r\n|\n|\r/", $article->content) as $paragraph)
-                            @if(trim($paragraph))
-                                <p>{{ $paragraph }}</p>
-                            @endif
-                        @endforeach
+                        {!! $article->content !!}
                     </div>
                 </div>
                 
