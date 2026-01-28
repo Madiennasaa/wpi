@@ -349,9 +349,9 @@
                         <a href="/tujuan" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Tujuan WPI</a>
                     </div>
                 </div>
-                
-                <a href="#" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Berita dan Kegiatan</a>
-                <a href="#" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Kontak</a>
+
+                <a href="{{ route('artikel.index') }}" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Berita dan Kegiatan</a>
+                <a href="/kontak" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Kontak</a>
             </div>
 
             {{-- Mobile Menu Footer --}}
@@ -512,6 +512,7 @@
         const closeMenu = document.getElementById('closeMenu');
         const overlay = document.getElementById('overlay');
 
+        // Fungsi buka menu yang lebih aman
         function openMobileMenu() {
             mobileMenu.classList.add('active');
             overlay.classList.remove('invisible', 'opacity-0');
@@ -520,6 +521,7 @@
             document.body.style.overflow = 'hidden';
         }
 
+        // Fungsi tutup menu
         function closeMobileMenu() {
             mobileMenu.classList.remove('active');
             overlay.classList.add('invisible', 'opacity-0');
@@ -528,8 +530,9 @@
             document.body.style.overflow = '';
         }
 
-        // Event Listeners
+        // Toggle Hamburger
         hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
             if (mobileMenu.classList.contains('active')) {
                 closeMobileMenu();
@@ -543,20 +546,27 @@
 
         const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-dropdown-toggle)');
         mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+            link.addEventListener('click', (e) => {
+                
+                setTimeout(closeMobileMenu, 100);
+            });
         });
 
-        // Handle Mobile Dropdown Toggle
         const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation(); 
+                
                 const dropdownId = this.getAttribute('data-dropdown');
                 const dropdownContent = document.getElementById(`dropdown-${dropdownId}`);
                 
-                // Toggle active class
+                // Toggle icon rotasi dan konten
                 this.classList.toggle('active');
-                dropdownContent.classList.toggle('active');
+                
+                if (dropdownContent) {
+                    dropdownContent.classList.toggle('active');
+                }
             });
         });
     </script>
