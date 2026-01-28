@@ -176,13 +176,10 @@
                 {{-- Content Body --}}
                 <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg border border-gray-100">
                     <div class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-                        @foreach (preg_split("/\r\n|\n|\r/", $article->content) as $paragraph)
-                            @if(trim($paragraph))
-                                <p>{{ $paragraph }}</p>
-                            @endif
-                        @endforeach
+                        {!! $article->content !!}
                     </div>
                 </div>
+
                 
                 {{-- Share Section --}}
                 <div class="mt-10 bg-gradient-to-br from-tosca-50 to-yellow-50 rounded-2xl p-8 border border-tosca-100">

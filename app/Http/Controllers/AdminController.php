@@ -81,7 +81,7 @@ class AdminController extends Controller
 
         $article->update($data);
 
-        return redirect()->route('admin.article.index')->with('success', 'Artikel berhasil diupdate!');
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diupdate!');
     }
 
     public function destroy($id) {
