@@ -18,6 +18,16 @@
     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         <div class="h-2 bg-gradient-to-r from-tosca-500 to-sunshine-500"></div>
         
+        @if ($errors->any())
+            <div style="background: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <strong>Update Gagal!</strong>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('admin.artikel.update', $article->id) }}" method="POST" enctype="multipart/form-data" class="p-8 space-y-6">
             @csrf 
             @method('PUT')
@@ -172,6 +182,12 @@
             { name: 'styles', items: [ 'Format' ] }
         ]
     });
+
+    document.querySelector('form').onsubmit = function() {
+        for (var instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+    };
 </script>
 
 <script>

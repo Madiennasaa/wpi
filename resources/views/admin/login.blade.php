@@ -49,10 +49,6 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #f0fdfa 0%, #fffbeb 100%);
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #14b8a6 0%, #f59e0b 100%);
         }
         .input-focus:focus {
             border-color: #14b8a6;
@@ -60,25 +56,22 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-4 bg-gray-50">
     
     <!-- Floating Decorations -->
-    <div class="fixed top-10 left-10 w-20 h-20 bg-tosca-200/30 rounded-full blur-3xl"></div>
-    <div class="fixed bottom-10 right-10 w-32 h-32 bg-sunshine-200/30 rounded-full blur-3xl"></div>
-    <div class="fixed top-1/2 right-1/4 w-24 h-24 bg-tosca-300/20 rounded-full blur-2xl"></div>
+    <div class="fixed top-10 left-10 w-20 h-20 bg-tosca-100 rounded-full blur-3xl opacity-60"></div>
+    <div class="fixed bottom-10 right-10 w-32 h-32 bg-tosca-100 rounded-full blur-3xl opacity-60"></div>
+    <div class="fixed top-1/2 right-1/4 w-24 h-24 bg-tosca-50 rounded-full blur-2xl opacity-60"></div>
 
     <div class="w-full max-w-md relative z-10">
         <!-- Logo & Welcome -->
         <div class="text-center mb-8">
-            <div class="inline-block w-20 h-20 gradient-bg rounded-2xl flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-2xl transform hover:scale-110 transition-transform duration-300">
-                WPI
-            </div>
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Admin Panel</h1>
             <p class="text-gray-600">Wirausaha Pelajar Indonesia</p>
         </div>
 
         <!-- Login Card -->
-        <div class="bg-white rounded-2xl shadow-2xl p-8 backdrop-blur-sm border border-gray-100">
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login ke Dashboard</h2>
             
             <form action="{{ url('login') }}" method="POST" class="space-y-5">
@@ -87,7 +80,7 @@
                 <!-- Email Field -->
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-2">
-                        <i class="fa-solid fa-envelope text-tosca-500 mr-2"></i>Email
+                        <i class="fa-solid fa-envelope text-tosca-600 mr-2"></i>Email
                     </label>
                     <input 
                         type="email" 
@@ -101,7 +94,7 @@
                 <!-- Password Field -->
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-2">
-                        <i class="fa-solid fa-lock text-tosca-500 mr-2"></i>Password
+                        <i class="fa-solid fa-lock text-tosca-600 mr-2"></i>Password
                     </label>
                     <input 
                         type="password" 
@@ -125,7 +118,7 @@
                 <!-- Submit Button -->
                 <button 
                     type="submit" 
-                    class="w-full gradient-bg text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                    class="w-full bg-tosca-600 hover:bg-tosca-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                     <i class="fa-solid fa-right-to-bracket mr-2"></i>Masuk ke Dashboard
                 </button>
             </form>
@@ -133,7 +126,7 @@
             <!-- Additional Info -->
             <div class="mt-6 pt-6 border-t border-gray-100">
                 <p class="text-center text-sm text-gray-500">
-                    <i class="fa-solid fa-shield-halved text-tosca-500"></i>
+                    <i class="fa-solid fa-shield-halved text-tosca-600"></i>
                     Area khusus administrator
                 </p>
             </div>

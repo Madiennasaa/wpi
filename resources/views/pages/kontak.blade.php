@@ -260,7 +260,6 @@
     </div>
 </section>
 
-{{-- MAP SECTION (Optional) --}}
 <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -271,16 +270,17 @@
         </div>
         
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-gray-100">
-            <div class="aspect-video bg-gradient-to-br from-tosca-100 to-yellow-100 flex items-center justify-center">
-                <div class="text-center">
-                    <i class="fas fa-map-marked-alt text-6xl text-tosca-400 mb-4"></i>
-                    <p class="text-gray-600 font-medium">
-                        Peta lokasi akan ditampilkan di sini
-                    </p>
-                    <p class="text-gray-500 text-sm mt-2">
-                        Jakarta, Indonesia
-                    </p>
-                </div>
+            {{-- Menggunakan aspect-video agar tingginya proporsional secara otomatis --}}
+            <div class="aspect-video w-full">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.510316702213!2d106.83009182127564!3d-6.180576264709727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1769521290185!5m2!1sid!2sid" {{-- Pastikan pakai URL embed asli kamu di sini --}}
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </div>
@@ -291,44 +291,55 @@
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Pertanyaan <span class="text-transparent bg-clip-text bg-gradient-to-r from-tosca-600 to-yellow-500">Umum</span>
+                Pertanyaan <span class="text-transparent bg-clip-text bg-gradient-to-r from-tosca-600 to-yellow-500">Seputar WPI</span>
             </h2>
             <div class="w-24 h-1 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-6"></div>
             <p class="text-gray-600">
-                Beberapa pertanyaan yang sering diajukan
+                Informasi umum yang sering ditanyakan tentang Wirausaha Pelajar Indonesia
             </p>
         </div>
         
         <div class="space-y-4">
+
+            {{-- FAQ 1 --}}
             <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-100 hover:border-tosca-300 transition-all">
                 <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <i class="fas fa-question-circle text-tosca-500"></i>
-                    Bagaimana cara bergabung dengan WPI?
+                    Siapa saja yang dapat bergabung dengan WPI?
                 </h4>
-                <p class="text-gray-600">
-                    Anda dapat bergabung dengan mengunjungi halaman <a href="#" class="text-tosca-600 font-medium hover:underline">Cara Bergabung</a> untuk informasi lengkap mengenai syarat dan prosedur pendaftaran.
+                <p class="text-gray-600 leading-relaxed">
+                    WPI terbuka bagi seluruh pelajar dan mahasiswa Indonesia yang memiliki minat
+                    di bidang kewirausahaan, bisnis, dan pengembangan diri, baik yang sudah
+                    memiliki usaha maupun yang baru ingin memulai.
                 </p>
             </div>
-            
+
+            {{-- FAQ 2 --}}
             <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-100 hover:border-tosca-300 transition-all">
                 <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <i class="fas fa-question-circle text-tosca-500"></i>
-                    Apakah ada biaya keanggotaan?
+                    Program apa saja yang diselenggarakan oleh WPI?
                 </h4>
-                <p class="text-gray-600">
-                    Untuk informasi detail mengenai biaya keanggotaan dan program, silakan hubungi kami melalui WhatsApp atau email yang tertera di atas.
+                <p class="text-gray-600 leading-relaxed">
+                    WPI menyelenggarakan berbagai program seperti seminar kewirausahaan,
+                    pelatihan bisnis, mentoring usaha, program kolaborasi, hingga event nasional
+                    yang bertujuan membentuk karakter wirausaha pelajar sejak dini.
                 </p>
             </div>
-            
+
+            {{-- FAQ 3 --}}
             <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-100 hover:border-tosca-300 transition-all">
                 <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <i class="fas fa-question-circle text-tosca-500"></i>
-                    Apakah WPI menerima kerja sama dengan pihak eksternal?
+                    Apakah WPI menerima kerja sama dan kemitraan?
                 </h4>
-                <p class="text-gray-600">
-                    Ya, kami sangat terbuka untuk berbagai bentuk kerja sama dan kemitraan. Silakan hubungi kami untuk mendiskusikan peluang kolaborasi.
+                <p class="text-gray-600 leading-relaxed">
+                    Ya, WPI sangat terbuka terhadap kerja sama dengan sekolah, kampus,
+                    komunitas, pelaku usaha, dan mitra strategis lainnya untuk mendukung
+                    pengembangan kewirausahaan pelajar di Indonesia.
                 </p>
             </div>
+
         </div>
     </div>
 </section>
