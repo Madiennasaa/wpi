@@ -444,7 +444,7 @@
 <body class="font-sans text-gray-800 leading-relaxed antialiased">
 
     {{-- ===== PAGE LOADER ===== --}}
-    <div class="page-loader active" id="pageLoader">
+    <div class="page-loader" id="pageLoader">
 
         <div class="spinner-container">
             <div class="spinner-ring"></div>
@@ -738,34 +738,47 @@
     <script>
         // ===== LOADING FUNCTIONALITY =====
         const pageLoader = document.getElementById('pageLoader');
-        
-        // Show loader on page load
+
+        // 1. Sembunyikan loader setelah halaman selesai dimuat
         window.addEventListener('load', function() {
-            // Hide loader after page fully loaded
             setTimeout(function() {
                 pageLoader.classList.remove('active');
             }, 500);
         });
 
-        // Show loader when clicking navigation links
-        const navLinks = document.querySelectorAll('.nav-link-trigger');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Hanya untuk link internal (bukan link eksternal atau #)
-                const href = this.getAttribute('href');
-                
-                // Skip jika link kosong, hash, atau eksternal
-                if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
-                    return;
-                }
-                
-                // Show loader
-                pageLoader.classList.add('active');
-            });
+        // 2. Terapkan loader ke SEMUA link (<a>) secara otomatis
+        document.addEventListener('click', function(e) {
+            // Cari apakah elemen yang diklik adalah link atau berada di dalam link
+            const link = e.target.closest('a');
+            
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+
+            // Validasi: Jangan munculkan spinner jika:
+            // - Link menuju ID internal (contoh: href="#section")
+            // - Link adalah tel: atau mailto:
+            // - Link dibuka di tab baru (target="_blank")
+            // - Link tidak memiliki href
+            if (
+                !href || 
+                href.startsWith('#') || 
+                href.startsWith('javascript:void(0)') ||
+                href.startsWith('tel:') || 
+                href.startsWith('mailto:') ||
+                target === '_blank' ||
+                e.ctrlKey || 
+                e.metaKey
+            ) {
+                return;
+            }
+
+            // Tampilkan loader
+            pageLoader.classList.add('active');
         });
 
-        // Hide loader if user goes back
+        // 3. Pastikan loader hilang jika user menekan tombol "Back" di browser
         window.addEventListener('pageshow', function(event) {
             if (event.persisted) {
                 pageLoader.classList.remove('active');
