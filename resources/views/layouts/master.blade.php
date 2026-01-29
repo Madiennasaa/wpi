@@ -243,6 +243,198 @@
         .mobile-dropdown-toggle.active svg {
             transform: rotate(180deg);
         }
+
+        /* ===== LOADING SPINNER STYLES ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 118, 110, 0.98);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .page-loader.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Spinner Container */
+        .spinner-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        /* Outer Ring */
+        .spinner-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: #facc15;
+            border-right-color: #facc15;
+            border-radius: 50%;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        /* Middle Ring */
+        .spinner-ring-2 {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border: 4px solid transparent;
+            border-bottom-color: #5eead4;
+            border-left-color: #5eead4;
+            border-radius: 50%;
+            animation: spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite reverse;
+        }
+
+        /* Inner Ring */
+        .spinner-ring-3 {
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border: 3px solid transparent;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Center Dot */
+        .spinner-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #facc15, #fde047);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        /* Loading Text */
+        .loading-text {
+            margin-top: 40px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        .loading-subtext {
+            margin-top: 10px;
+            color: #5eead4;
+            font-size: 14px;
+            font-weight: 400;
+            animation: fadeInOut 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Logo Animation */
+        .loading-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Progress Bar */
+        .loading-progress {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #facc15, #fde047, #facc15);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            animation: progressLoad 2s ease-in-out forwards, shimmer 1.5s linear infinite;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+
+        @keyframes progressLoad {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
     </style>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -251,13 +443,31 @@
 </head>
 <body class="font-sans text-gray-800 leading-relaxed antialiased">
 
+    {{-- ===== PAGE LOADER ===== --}}
+    <div class="page-loader active" id="pageLoader">
+
+        <div class="spinner-container">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring-2"></div>
+            <div class="spinner-ring-3"></div>
+            <div class="spinner-dot"></div>
+        </div>
+        
+        <div class="loading-text">Memuat Halaman</div>
+        <div class="loading-subtext">Mohon tunggu sebentar...</div>
+        
+        <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+        </div>
+    </div>
+
     {{-- NAVBAR --}}
     <header class="navbar-blur shadow-lg sticky top-0 z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 {{-- Logo --}}
                 <div class="flex items-center gap-4">
-                    <a href="/" class="flex items-center gap-3 group">
+                    <a href="/" class="flex items-center gap-3 group nav-link-trigger">
                         <div class="relative">
                             <img src="{{ asset('images/logo.png') }}" alt="WPI" class="h-14 w-auto transition-transform group-hover:scale-105">
                             <div class="absolute -inset-1 bg-yellow-400 rounded-full blur opacity-0 group-hover:opacity-20 transition-opacity"></div>
@@ -293,20 +503,20 @@
                         
                         {{-- Menu Dropdown --}}
                         <div class="dropdown-menu absolute top-full left-0 min-w-[220px] bg-tosca-800 rounded-xl shadow-2xl border border-white/10 overflow-hidden">
-                            <a href="/sejarah" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl">Sejarah</a>
-                            <a href="/struktur" class="dropdown-item block px-5 py-3 text-white text-sm">Struktur Organisasi</a>
-                            <a href="/visi-misi" class="dropdown-item block px-5 py-3 text-white text-sm">Visi dan Misi</a>
-                            <a href="/tugas-fungsi" class="dropdown-item block px-5 py-3 text-white text-sm">Tugas dan Fungsi</a>
-                            <a href="/program" class="dropdown-item block px-5 py-3 text-white text-sm">Program WPI</a>
-                            <a href="/tujuan" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl">Tujuan WPI</a>
+                            <a href="/sejarah" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl nav-link-trigger">Sejarah</a>
+                            <a href="/struktur" class="dropdown-item block px-5 py-3 text-white text-sm nav-link-trigger">Struktur Organisasi</a>
+                            <a href="/visi-misi" class="dropdown-item block px-5 py-3 text-white text-sm nav-link-trigger">Visi dan Misi</a>
+                            <a href="/tugas-fungsi" class="dropdown-item block px-5 py-3 text-white text-sm nav-link-trigger">Tugas dan Fungsi</a>
+                            <a href="/program" class="dropdown-item block px-5 py-3 text-white text-sm nav-link-trigger">Program WPI</a>
+                            <a href="/tujuan" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl nav-link-trigger">Tujuan WPI</a>
                         </div>
                     </div>
                     
                     <a href="{{ route('artikel.index') }}"
-                        class="nav-link text-white font-semibold text-sm py-2 {{ request()->routeIs('artikel.*') ? 'active' : '' }}">
+                        class="nav-link text-white font-semibold text-sm py-2 nav-link-trigger {{ request()->routeIs('artikel.*') ? 'active' : '' }}">
                         Berita dan Kegiatan
                     </a>
-                    <a href="/kontak" class="nav-link text-white font-semibold text-sm py-2 {{ request()->is('kontak') ? 'active' : '' }}">Kontak</a>
+                    <a href="/kontak" class="nav-link nav-link-trigger text-white font-semibold text-sm py-2 {{ request()->is('kontak') ? 'active' : '' }}">Kontak</a>
                 </nav>
 
                 {{-- Right Side: Social & CTA --}}
@@ -360,17 +570,17 @@
                         </svg>
                     </button>
                     <div class="mobile-dropdown-content bg-tosca-900/50" id="dropdown-tentang">
-                        <a href="/sejarah" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Sejarah</a>
-                        <a href="/struktur" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Struktur Organisasi</a>
-                        <a href="/visi-misi" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Visi dan Misi</a>
-                        <a href="/tugas-fungsi" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Tugas dan Fungsi</a>
-                        <a href="/program" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Program WPI</a>
-                        <a href="/tujuan" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all">Tujuan WPI</a>
+                        <a href="/sejarah" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Sejarah</a>
+                        <a href="/struktur" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Struktur Organisasi</a>
+                        <a href="/visi-misi" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Visi dan Misi</a>
+                        <a href="/tugas-fungsi" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Tugas dan Fungsi</a>
+                        <a href="/program" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Program WPI</a>
+                        <a href="/tujuan" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Tujuan WPI</a>
                     </div>
                 </div>
 
-                <a href="{{ route('artikel.index') }}" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Berita dan Kegiatan</a>
-                <a href="/kontak" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors">Kontak</a>
+                <a href="{{ route('artikel.index') }}" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors nav-link-trigger">Berita dan Kegiatan</a>
+                <a href="/kontak" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors nav-link-trigger">Kontak</a>
             </div>
 
             {{-- Mobile Menu Footer --}}
@@ -483,31 +693,31 @@
                 <div>
                     <h4 class="text-yellow-400 font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Tentang Kami
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Program
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Kegiatan
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Gabung
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
@@ -526,6 +736,43 @@
     </footer>
 
     <script>
+        // ===== LOADING FUNCTIONALITY =====
+        const pageLoader = document.getElementById('pageLoader');
+        
+        // Show loader on page load
+        window.addEventListener('load', function() {
+            // Hide loader after page fully loaded
+            setTimeout(function() {
+                pageLoader.classList.remove('active');
+            }, 500);
+        });
+
+        // Show loader when clicking navigation links
+        const navLinks = document.querySelectorAll('.nav-link-trigger');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Hanya untuk link internal (bukan link eksternal atau #)
+                const href = this.getAttribute('href');
+                
+                // Skip jika link kosong, hash, atau eksternal
+                if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) {
+                    return;
+                }
+                
+                // Show loader
+                pageLoader.classList.add('active');
+            });
+        });
+
+        // Hide loader if user goes back
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                pageLoader.classList.remove('active');
+            }
+        });
+
+        // ===== MOBILE MENU FUNCTIONALITY =====
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenu = document.getElementById('closeMenu');
