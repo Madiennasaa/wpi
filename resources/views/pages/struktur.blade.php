@@ -1049,18 +1049,18 @@
             {{-- Mantan President 2 --}}
             <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
                 <div class="leader-image-container">
-                    <img src="{{ asset('images/mantan-pres-2.jpg') }}" alt="Nama Mantan President 2" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                    <img src="{{ asset('images/mantan-pres-2.jpeg') }}" alt="Denni Arnanda" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="leader-overlay"></div>
                     <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
-                        PRESIDENT 2018-2020
+                        PRESIDENT 2019-2021
                     </div>
                 </div>
                 <div class="leader-info">
-                    <h3 class="leader-name">Nama Mantan President 2</h3>
+                    <h3 class="leader-name">Denni Arnanda</h3>
                     <p class="leader-position">Mantan President WPI</p>
                     <hr class="leader-divider">
                     <p class="leader-description">
-                        Memimpin WPI pada periode 2018-2020. Fokus pada penguatan struktur internal dan kolaborasi dengan lembaga pendidikan.
+                        Memimpin WPI pada periode 2019-2021. Fokus pada penguatan struktur internal dan kolaborasi dengan lembaga pendidikan.
                     </p>
                     <div class="leader-social">
                         <a href="#" class="social-icon">

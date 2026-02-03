@@ -689,13 +689,15 @@
             {{-- Activity Card 1 --}}
             <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
                 <div class="relative h-64 group overflow-hidden">
-                    <img src="{{ asset('images/activity1.png') }}" alt="Seminar Kewirausahaan Pelajar WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="{{ asset('images/activity1.jpg') }}" alt="Seminar Kewirausahaan Pelajar WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
-                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
-                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
+                        <a href="https://youtu.be/srbwszluqz0?si=g93_FR06aQqVASup" target="_blank" rel="noopener noreferrer">
+                            <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+                                <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="p-6">
@@ -703,13 +705,13 @@
                         <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
                             3 MIN
                         </span>
-                        <span class="text-sm text-gray-500">18 Oktober 2025</span>
+                        <span class="text-sm text-gray-500">28 Februari 2015</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                        Seminar Kewirausahaan Pelajar Nasional
+                        Seminar Nasional & Grand Launching
                     </h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Aula Pendidikan, Jakarta
+                        Ilmu Kesehatan Universitas Indonesia, Depok
                     </p>
                 </div>
             </div>
@@ -719,25 +721,27 @@
                 <div class="relative h-64 group overflow-hidden">
                     <img src="{{ asset('images/activity2.png') }}" alt="Pelatihan Bisnis Digital WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
-                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
-                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
+                        <a href="https://youtu.be/fz6TSGAnD3g?si=2QwK3wd4Dx0WcMHM" target="_blank" rel="noopener noreferrer">
+                            <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+                                <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-4">
                         <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
-                            3 MIN
+                            30 MIN
                         </span>
+                        <span class="text-sm text-gray-500">29 November 2022</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                        Pelatihan Bisnis Digital untuk Pelajar
+                        Pemaparan Program Kerja oleh Presiden WPI
                     </h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Pelatihan kewirausahaan berbasis digital untuk meningkatkan kreativitas dan produktivitas pelajar serta mahasiswa WPI.
-                    </p>
+                        Pemaparan rencana dan arah program kerja WPI oleh Presiden sebagai panduan strategis organisasi ke depan.
                 </div>
             </div>
             
@@ -746,24 +750,27 @@
                 <div class="relative h-64 group overflow-hidden">
                     <img src="{{ asset('images/activity3.png') }}" alt="Leadership Camp WPI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center">
-                        <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
-                            <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
+                        <a href="https://youtu.be/74VlPFu3cC8?si=82QwlhIdbyomrpEx" target="_blank" rel="noopener noreferrer">
+                            <button class="play-button w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+                                <svg class="w-6 h-6 text-tosca-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-4">
                         <span class="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">
-                            3 MIN
+                            4 MIN
                         </span>
+                        <span class="text-sm text-gray-500">25 Agustus 2015</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                        Leadership Camp & Entrepreneur Mindset WPI
+                        Wirausaha Pelajar Indonesia: Adryan Fitra, Bisnis Online untuk pelajar
                     </h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Program pengembangan kepemimpinan dan pola pikir wirausaha bagi pelajar dan mahasiswa sebagai calon pemimpin masa depan.
+                        Wirausaha Pelajar Indonesia yang dibawakan Adryan Fitra sebagai Co-Founder WPI. menyampaikan cara berbisnis untuk pelajar melalui internet.
                     </p>
                 </div>
             </div>
@@ -857,7 +864,7 @@
             <div class="order-2 lg:order-1 relative">
                 <div class="absolute -top-6 -left-6 w-24 h-24 bg-yellow-400 rounded-2xl opacity-20"></div>
                 <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-2xl opacity-10"></div>
-                <img src="{{ asset('images/testimoni.png') }}" alt="Testimonial" class="relative w-full rounded-3xl shadow-2xl border-4 border-white/20">
+                <img src="{{ asset('images/testimoni.jpg') }}" alt="Testimonial" class="relative w-full rounded-3xl shadow-2xl border-4 border-white/20">
             </div>
             
             <div class="order-1 lg:order-2">
@@ -878,8 +885,9 @@
                 <div class="flex items-center gap-4">
                     <div class="w-1 h-16 bg-yellow-400 rounded-full"></div>
                     <div>
-                        <p class="text-xl font-bold text-white">Ahmad Rizki Pratama</p>
-                        <p class="text-tosca-100">Founder & CEO, StartUp Digital</p>
+                        <p class="text-xl font-bold text-white">Sandiaga Uno</p>
+                        <p class="text-tosca-100">Pengusaha dan mantan Menteri Pariwisata Republik Indonesia
+</p>
                     </div>
                 </div>
             </div>
