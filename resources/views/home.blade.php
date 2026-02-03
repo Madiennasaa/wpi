@@ -274,9 +274,9 @@
     <div class="decorative-blob w-80 h-80 bg-tosca-300 bottom-20 -right-40"></div>
     
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('images/desc.jpg') }}" 
+        <img src="{{ asset('images/desc.jpeg') }}" 
              alt="Background" 
-             class="w-full h-full object-cover opacity-20 grayscale"> 
+             class="w-full h-full object-cover opacity-40 grayscale"> 
         {{-- Tips: Gunakan opacity rendah agar teks tetap terbaca jelas --}}
         
         {{-- Overlay Gradient (Opsional: Agar transisi ke section bawah lebih halus) --}}
@@ -296,8 +296,10 @@
             </h1>
             
             <p class="text-xl lg:text-2xl text-tosca-50 mb-12 max-w-2xl leading-relaxed font-light">
-                Wadah pelajar dan mahasiswa Indonesia untuk belajar, berwirausaha, dan bertumbuh bersama menuju masa depan yang gemilang.
+                Dari pelajar hari ini, lahir pengusaha masa depan.  
+                WPI hadir sebagai ruang bertumbuh untuk belajar, beraksi, dan membangun bisnis nyata sejak dini.
             </p>
+
             
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
@@ -335,7 +337,7 @@
             {{-- Stat 1 --}}
             <div class="stat-item text-center group">
                 <div class="mb-4">
-                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">48</span>
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">11</span>
                 </div>
                 <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
                 <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Tahun</p>
@@ -355,7 +357,7 @@
             {{-- Stat 3 --}}
             <div class="stat-item text-center group">
                 <div class="mb-4">
-                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">3000<span class="gradient-text-yellow">+</span></span>
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">300<span class="gradient-text-yellow">+</span></span>
                 </div>
                 <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
                 <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Anggota</p>
@@ -365,7 +367,7 @@
             {{-- Stat 4 --}}
             <div class="stat-item text-center group">
                 <div class="mb-4">
-                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">171</span>
+                    <span class="font-display text-6xl lg:text-7xl font-bold gradient-text block">17</span>
                 </div>
                 <div class="h-1 w-20 mx-auto bg-gradient-to-r from-tosca-400 to-yellow-400 rounded-full mb-4 group-hover:w-28 transition-all duration-300"></div>
                 <p class="text-gray-700 font-semibold text-lg uppercase tracking-wider">Pengurus Inti</p>
@@ -444,7 +446,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="text-2xl font-bold text-gray-900">3000+</p>
+                                <p class="text-2xl font-bold text-gray-900">300+</p>
                                 <p class="text-sm text-gray-600">Anggota Aktif</p>
                             </div>
                         </div>

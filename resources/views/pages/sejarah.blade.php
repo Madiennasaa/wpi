@@ -262,7 +262,7 @@
                     <div class="space-y-6">
                         <div>
                             <div class="flex items-baseline gap-2 mb-2">
-                                <span class="stat-number font-display text-4xl font-bold gradient-text">48</span>
+                                <span class="stat-number font-display text-4xl font-bold gradient-text">11</span>
                                 <span class="text-sm text-gray-600">tahun</span>
                             </div>
                             <p class="text-sm text-gray-600">Pengalaman berkarya</p>

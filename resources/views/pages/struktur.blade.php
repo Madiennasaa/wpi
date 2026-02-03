@@ -141,6 +141,136 @@
         transform: scale(1.1);
         box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
     }
+
+    /* New Leadership Styles - Minimalist */
+    .leadership-minimalist-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: linear-gradient(145deg, #ffffff, #f8fafc);
+        border-radius: 1.5rem;
+        border: 1px solid rgba(20, 184, 166, 0.1);
+        overflow: hidden;
+    }
+    
+    .leadership-minimalist-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px -15px rgba(20, 184, 166, 0.15);
+        border-color: rgba(20, 184, 166, 0.2);
+    }
+    
+    .leader-image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem 1rem 0 0;
+        height: 320px;
+    }
+    
+    .leader-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    
+    .leadership-minimalist-card:hover .leader-image {
+        transform: scale(1.05);
+    }
+    
+    .leader-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+        height: 80px;
+        z-index: 1;
+    }
+    
+    .leader-badge {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        z-index: 2;
+        border: 1px solid rgba(20, 184, 166, 0.2);
+    }
+    
+    .leader-info {
+        padding: 2rem;
+    }
+    
+    .leader-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+    }
+    
+    .leader-position {
+        font-size: 0.875rem;
+        color: #64748b;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .leader-description {
+        font-size: 0.875rem;
+        color: #475569;
+        line-height: 1.6;
+    }
+    
+    .leader-divider {
+        height: 2px;
+        background: linear-gradient(to right, transparent, #14b8a6, transparent);
+        margin: 1rem 0;
+        border: none;
+    }
+    
+    .timeline-divider {
+        height: 1px;
+        background: linear-gradient(to right, transparent, #cbd5e1, transparent);
+        margin: 4rem 0;
+        border: none;
+    }
+    
+    .section-subtitle {
+        font-size: 1.25rem;
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 400;
+    }
+    
+    .leader-social {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    
+    .social-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1f5f9;
+        color: #64748b;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .social-icon:hover {
+        background: #14b8a6;
+        color: white;
+        transform: translateY(-2px);
+    }
 </style>
 @endpush
 
@@ -675,238 +805,300 @@
     </div>
 </section>
 
-{{-- SYARAT & KETENTUAN SECTION --}}
-<section class="py-20 lg:py-32 bg-white relative overflow-hidden">
+{{-- LEADERSHIP SECTION --}}
+<section class="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
     {{-- Background Decoration --}}
     <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 right-20 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
+        <div class="absolute top-20 right-20 w-96 h-96 bg-tosca-200 rounded-full blur-3xl"></div>
     </div>
     
-    <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
             <span class="inline-block px-4 py-2 bg-tosca-100 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-4">
-                PERSYARATAN
+                STRUKTUR PIMPINAN
             </span>
             <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Syarat & Ketentuan <span class="gradient-text">Kepengurusan</span>
+                Pimpinan <span class="gradient-text">WPI</span>
             </h2>
             <div class="w-24 h-1.5 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-8"></div>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Persyaratan dan aturan yang berlaku bagi pengurus WPI tingkat nasional
-            </p>
-        </div>
-        
-        <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {{-- Persyaratan Umum --}}
-            <div class="structure-card group">
-                <div class="bg-gradient-to-br from-white to-tosca-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Persyaratan Umum</h3>
-                    <ul class="space-y-4">
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-tosca-600 font-bold">1</span>
-                            </div>
-                            <span class="text-gray-700">Mahasiswa aktif</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-tosca-600 font-bold">2</span>
-                            </div>
-                            <span class="text-gray-700">Memiliki usaha atau bisnis</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-tosca-600 font-bold">3</span>
-                            </div>
-                            <span class="text-gray-700">Memiliki pengalaman memimpin organisasi</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-tosca-600 font-bold">4</span>
-                            </div>
-                            <span class="text-gray-700">Berdomisili di Jakarta</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-tosca-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-tosca-600 font-bold">5</span>
-                            </div>
-                            <span class="text-gray-700">Kreatif, mandiri, inisiatif, semangat, dan suka bekerja keras dalam kegiatan sosial</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            {{-- Ketentuan Khusus --}}
-            <div class="structure-card group">
-                <div class="bg-gradient-to-br from-white to-yellow-50/30 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-gray-100 hover:border-yellow-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Ketentuan Khusus</h3>
-                    <ul class="space-y-4">
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-yellow-600 font-bold">1</span>
-                            </div>
-                            <span class="text-gray-700">President Director dan Vice President Director dipilih saat RUPS Nasional oleh seluruh CEO dan dilantik serta disetujui oleh Chairman Nasional (Kak Bekky)</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-yellow-600 font-bold">2</span>
-                            </div>
-                            <span class="text-gray-700">Board of Director dipilih secara bijaksana oleh President Director dan Vice President Director</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-yellow-600 font-bold">3</span>
-                            </div>
-                            <span class="text-gray-700">Masa jabatan President Director, Vice President Director, dan Board of Director adalah 3 tahun dan dapat dipilih kembali</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-yellow-600 font-bold">4</span>
-                            </div>
-                            <span class="text-gray-700">President Director dan Vice President Director wajib menjalankan tugas dan program kegiatan yang telah dibuat</span>
-                        </li>
-                        <li class="req-item flex items-start gap-3">
-                            <div class="req-badge w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span class="text-yellow-600 font-bold">5</span>
-                            </div>
-                            <span class="text-gray-700">Segala hal yang belum diatur dalam GuideBook ini akan diputuskan dalam National Board Meeting</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- LEADERSHIP SECTION --}}
-<section class="py-20 lg:py-32 bg-gradient-to-br from-tosca-600 via-tosca-500 to-tosca-400 relative overflow-hidden">
-    {{-- Background Decoration --}}
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-yellow-300 rounded-full text-sm font-bold tracking-wider mb-4">
-                STRUKTUR PIMPINAN
-            </span>
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4">
-                Pimpinan <span class="text-yellow-300">WPI</span>
-            </h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-yellow-400 to-tosca-200 mx-auto rounded-full mb-8"></div>
-            <p class="text-xl text-tosca-100 max-w-3xl mx-auto">
                 Jajaran pimpinan yang mengarahkan visi, strategi, dan gerak organisasi Wirausaha Pelajar Indonesia
             </p>
         </div>
         
-        {{-- First Row: Founders --}}
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
-            {{-- Co Founder --}}
-            <div class="leadership-card bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden">
-                <div class="h-80 bg-gradient-to-br from-tosca-100 to-tosca-200 overflow-hidden">
-                    <img src="{{ asset('images/cofounder.jpeg') }}" alt="Rezza Artha" class="w-full h-full object-cover object-top">
-                </div>
-                <div class="p-6">
-                    <span class="inline-block px-3 py-1 bg-tosca-100 text-tosca-700 rounded-full text-xs font-bold mb-3">
-                        CO-FOUNDER
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Rezza Artha</h3>
-                    <p class="text-gray-600">Wakil Pendiri WPI</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Berperan dalam perumusan kebijakan strategis dan pengembangan organisasi secara nasional.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Founder --}}
-            <div class="leadership-card bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden">
-                <div class="h-80 bg-gradient-to-br from-yellow-100 to-yellow-200 overflow-hidden">
-                    <img src="{{ asset('images/founder.jpeg') }}" alt="Kak Bekky" class="w-full h-full object-cover object-top">
-                </div>
-                <div class="p-6">
-                    <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold mb-3">
+        {{-- Pendiri WPI --}}
+        <div class="text-center mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
+                Pendiri WPI
+                <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Individu-individu yang menggagas dan meletakkan pondasi organisasi WPI
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+            {{-- Founder 1 --}}
+            <div class="leadership-minimalist-card">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/founder.jpeg') }}" alt="Kak Bekky" class="leader-image">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
                         FOUNDER
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Kak Bekky</h3>
-                    <p class="text-gray-600">Pendiri Wirausaha Pelajar Indonesia</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Penggagas visi dan arah besar WPI serta pembina utama organisasi di tingkat nasional.
-                        </p>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Kak Bekky</h3>
+                    <p class="leader-position">Pendiri Wirausaha Pelajar Indonesia</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Penggagas utama visi dan arah besar WPI. Berperan sebagai pembina utama organisasi di tingkat nasional dan penentu kebijakan strategis.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            {{-- Co Founder --}}
-            <div class="leadership-card bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden">
-                <div class="h-80 bg-gradient-to-br from-tosca-100 to-tosca-200 overflow-hidden">
-                    <img src="{{ asset('images/cofounder2.png') }}" alt="Adnan Mughoffar" class="w-full h-full object-cover object-top">
-                </div>
-                <div class="p-6">
-                    <span class="inline-block px-3 py-1 bg-tosca-100 text-tosca-700 rounded-full text-xs font-bold mb-3">
+            {{-- Co-Founder 1 --}}
+            <div class="leadership-minimalist-card">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/cofounder.jpeg') }}" alt="Rezza Artha" class="leader-image">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
                         CO-FOUNDER
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Adnan Mughoffar</h3>
-                    <p class="text-gray-600">Wakil Pendiri WPI</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Mendukung pengelolaan organisasi dan penguatan struktur kepemimpinan WPI.
-                        </p>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Rezza Artha</h3>
+                    <p class="leader-position">Wakil Pendiri WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Berperan aktif dalam perumusan kebijakan strategis, pengembangan organisasi secara nasional, dan pembentukan struktur kepemimpinan.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Co-Founder 2 --}}
+            <div class="leadership-minimalist-card">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/cofounder2.png') }}" alt="Adnan Mughoffar" class="leader-image">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
+                        CO-FOUNDER
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Adnan Mughoffar</h3>
+                    <p class="leader-position">Wakil Pendiri WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Mendukung pengelolaan organisasi, penguatan struktur kepemimpinan, dan pengembangan jaringan strategis WPI.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Second Row: President & Vice President (Centered) --}}
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {{-- Empty space for centering --}}
-            <div class="hidden md:block"></div>
-            
+        {{-- Pimpinan Nasional Saat Ini --}}
+        <div class="text-center mb-12 mt-20">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                Pimpinan Nasional Saat Ini
+                <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Kepemimpinan yang sedang menjabat dan bertanggung jawab atas operasional organisasi
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
             {{-- President --}}
-            <div class="leadership-card bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden md:col-start-1 md:col-end-2">
-                <div class="h-80 bg-gradient-to-br from-tosca-100 to-tosca-200 flex items-center justify-center overflow-hidden">
-                    <img src="{{ asset('images/pres.png') }}" alt="Ismail" class="w-full h-full object-cover object-top">
+            <div class="leadership-minimalist-card">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/pres.png') }}" alt="Ismail" class="leader-image">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-tosca-500 to-tosca-600 text-white">
+                        PRESIDENT
+                    </div>
                 </div>
-                <div class="p-6">
-                    <span class="inline-block px-3 py-1 bg-tosca-100 text-tosca-700 rounded-full text-xs font-bold mb-3">
-                        PRESIDENT 
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Ismail</h3>
-                    <p class="text-gray-600">President WPI</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Bertanggung jawab atas kepemimpinan nasional, pengambilan keputusan strategis,
-                            serta pengelolaan seluruh program dan cabang WPI.
-                        </p>
+                <div class="leader-info">
+                    <h3 class="leader-name">Ismail</h3>
+                    <p class="leader-position">President WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Bertanggung jawab atas kepemimpinan nasional, pengambilan keputusan strategis, serta pengelolaan seluruh program dan cabang WPI.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
             {{-- Vice President --}}
-            <div class="leadership-card bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden">
-                <div class="h-80 bg-gradient-to-br from-tosca-100 to-tosca-200 flex items-center justify-center overflow-hidden">
-                    <img src="{{ asset('images/wapres.png') }}" alt="Yusuf Budi Raharjo" class="w-full h-full object-cover object-top">
-                </div>
-                <div class="p-6">
-                    <span class="inline-block px-3 py-1 bg-tosca-100 text-tosca-700 rounded-full text-xs font-bold mb-3">
+            <div class="leadership-minimalist-card">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/wapres.png') }}" alt="Yusuf Budi Raharjo" class="leader-image">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
                         VICE PRESIDENT
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Yusuf Budi Raharjo</h3>
-                    <p class="text-gray-600">Vice President WPI</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Mendampingi Presiden dalam menjalankan organisasi serta mengoordinasikan
-                            pelaksanaan program nasional dan daerah.
-                        </p>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Yusuf Budi Raharjo</h3>
+                    <p class="leader-position">Vice President WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Mendampingi Presiden dalam menjalankan organisasi serta mengoordinasikan pelaksanaan program nasional dan daerah.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="timeline-divider">
+
+        {{-- Mantan Pimpinan Nasional --}}
+        <div class="text-center mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+                Mantan Pimpinan Nasional
+                <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Para pemimpin yang telah berkontribusi dalam perjalanan WPI sebelumnya
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {{-- Mantan President 1 --}}
+            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/mantan-pres-1.jpeg') }}" alt="Nama Mantan President 1" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                        PRESIDENT 2022-2025
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Rosyad</h3>
+                    <p class="leader-position">Mantan President WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Memimpin WPI pada periode 2022-2025. Berhasil mengembangkan dan meluncurkan program wirausaha pelajar nasional.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            {{-- Empty space for centering --}}
-            <div class="hidden md:block"></div>
+            {{-- Mantan President 2 --}}
+            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/mantan-pres-2.jpg') }}" alt="Nama Mantan President 2" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                        PRESIDENT 2018-2020
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Nama Mantan President 2</h3>
+                    <p class="leader-position">Mantan President WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Memimpin WPI pada periode 2018-2020. Fokus pada penguatan struktur internal dan kolaborasi dengan lembaga pendidikan.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Mantan President 3 --}}
+            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                <div class="leader-image-container">
+                    <img src="{{ asset('images/mantan-pres-3.jpeg') }}" alt="Nama Mantan President 3" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="leader-overlay"></div>
+                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                        PRESIDENT 2019-2021
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3 class="leader-name">Iqbal</h3>
+                    <p class="leader-position">Mantan President WPI</p>
+                    <hr class="leader-divider">
+                    <p class="leader-description">
+                        Memimpin WPI pada periode 2019-2021, Berperan dalam konsolidasi organisasi dan pengembangan program dasar wirausaha pelajar.
+                    </p>
+                    <div class="leader-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
