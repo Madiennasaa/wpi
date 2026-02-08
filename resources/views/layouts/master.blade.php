@@ -512,10 +512,21 @@
                         </div>
                     </div>
                     
-                    <a href="{{ route('artikel.index') }}"
-                        class="nav-link text-white font-semibold text-sm py-2 nav-link-trigger {{ request()->routeIs('artikel.*') ? 'active' : '' }}">
-                        Berita dan Kegiatan
-                    </a>
+                    {{-- Dropdown: Berita & Kegiatan --}}
+                    <div class="relative dropdown group py-4 {{ request()->routeIs('berita.*', 'kegiatan.*', 'artikel.*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link flex items-center gap-2 text-white font-semibold text-sm {{ request()->routeIs('berita.*', 'kegiatan.*', 'artikel.*') ? 'active' : '' }}">
+                            Berita & Kegiatan
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </a>
+                        
+                        <div class="dropdown-menu absolute top-full left-0 min-w-[220px] bg-tosca-800 rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+                            <a href="{{ route('berita.index') }}" class="dropdown-item block px-5 py-3 text-white text-sm first:rounded-t-xl nav-link-trigger">Berita</a>
+                            <a href="{{ route('kegiatan.index') }}" class="dropdown-item block px-5 py-3 text-white text-sm last:rounded-b-xl nav-link-trigger">Kegiatan</a>
+                        </div>
+                    </div>
+                    
                     <a href="/kontak" class="nav-link nav-link-trigger text-white font-semibold text-sm py-2 {{ request()->is('kontak') ? 'active' : '' }}">Kontak</a>
                 </nav>
 
@@ -579,7 +590,20 @@
                     </div>
                 </div>
 
-                <a href="{{ route('artikel.index') }}" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors nav-link-trigger">Berita dan Kegiatan</a>
+                {{-- Dropdown: Berita & Kegiatan --}}
+                <div class="border-b border-white/10">
+                    <button class="mobile-dropdown-toggle w-full flex items-center justify-between px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors" data-dropdown="berita">
+                        <span>Berita & Kegiatan</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content bg-tosca-900/50" id="dropdown-berita">
+                        <a href="{{ route('berita.index') }}" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Berita</a>
+                        <a href="{{ route('kegiatan.index') }}" class="block px-10 py-3 text-white text-sm hover:bg-white/5 border-l-2 border-transparent hover:border-yellow-400 transition-all nav-link-trigger">Kegiatan</a>
+                    </div>
+                </div>
+
                 <a href="/kontak" class="block px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 border-b border-white/10 transition-colors nav-link-trigger">Kontak</a>
             </div>
 
@@ -693,31 +717,31 @@
                 <div>
                     <h4 class="text-yellow-400 font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
+                        <li><a href="/" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Tentang Kami
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
+                        <li><a href="/program" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Program
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
+                        <li><a href="{{ route('berita.index') }}" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Berita
+                        </a></li>
+                        <li><a href="{{ route('kegiatan.index') }}" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                             Kegiatan
                         </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                            Gabung
-                        </a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
+                        <li><a href="/kontak" class="hover:text-yellow-400 transition-colors inline-flex items-center gap-2 group nav-link-trigger">
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>

@@ -100,6 +100,145 @@
         transform: translateY(-8px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
+
+    /* Registration Form Styles */
+    .registration-section {
+        background: linear-gradient(135deg, #f0fdfa 0%, #fefce8 100%);
+        border: 2px solid #14b8a6;
+        box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .form-label .required {
+        color: #ef4444;
+        margin-left: 0.25rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #14b8a6;
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+    }
+
+    .form-input::placeholder {
+        color: #94a3b8;
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        background: white;
+        cursor: pointer;
+    }
+
+    .form-select:focus {
+        outline: none;
+        border-color: #14b8a6;
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+    }
+
+    .btn-register {
+        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .btn-register:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(20, 184, 166, 0.3);
+    }
+
+    .btn-register:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .alert {
+        padding: 1rem;
+        border-radius: 0.75rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .alert-success {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #34d399;
+    }
+
+    .alert-error {
+        background-color: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #f87171;
+    }
+
+    .registration-closed {
+        background: linear-gradient(135deg, #fee2e2 0%, #fef3c7 100%);
+        border: 2px solid #ef4444;
+    }
+
+    .badge-closed {
+        background: #ef4444;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 </style>
 @endpush
 
@@ -123,11 +262,15 @@
 
     <div class="relative max-w-5xl mx-auto px-6 lg:px-8">
         <div class="text-center">
-            {{-- Breadcrumb --}}
+            {{-- Breadcrumb - UPDATED --}}
             <div class="flex items-center justify-center gap-2 text-tosca-100 text-sm mb-6">
                 <a href="/" class="hover:text-yellow-300 transition-colors">Beranda</a>
                 <i class="fas fa-chevron-right"></i>
-                <a href="{{ route('artikel.index') }}" class="hover:text-yellow-300 transition-colors">Artikel</a>
+                @if($article->type == 'berita')
+                    <a href="{{ route('berita.index') }}" class="hover:text-yellow-300 transition-colors">Berita</a>
+                @else
+                    <a href="{{ route('kegiatan.index') }}" class="hover:text-yellow-300 transition-colors">Kegiatan</a>
+                @endif
                 <i class="fas fa-chevron-right"></i>
                 <span class="text-yellow-300 font-semibold">Detail</span>
             </div>
@@ -180,6 +323,146 @@
                     </div>
                 </div>
 
+                {{-- REGISTRATION SECTION (Only for 'kegiatan' type) --}}
+                @if($article->type == 'kegiatan')
+                <div id="registration-section" class="mt-10 registration-section rounded-2xl p-8 lg:p-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-display text-2xl lg:text-3xl font-bold text-gray-900 flex items-center gap-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-user-plus text-white text-xl"></i>
+                            </div>
+                            Daftar Sekarang
+                        </h3>
+                    </div>
+
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Isi formulir di bawah ini untuk mendaftar pada kegiatan <strong>{{ $article->title }}</strong>. Data Anda akan tersimpan dengan aman.
+                    </p>
+
+                    <div id="alert-container"></div>
+
+                    <form id="registrationForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            {{-- Nama Lengkap --}}
+                            <div class="form-group">
+                                <label for="nama" class="form-label">
+                                    Nama Lengkap
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" 
+                                       id="nama" 
+                                       name="nama" 
+                                       class="form-input" 
+                                       placeholder="Masukkan nama lengkap Anda"
+                                       required>
+                            </div>
+
+                            {{-- Email --}}
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    Email
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       class="form-input" 
+                                       placeholder="contoh@email.com"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            {{-- No. WhatsApp --}}
+                            <div class="form-group">
+                                <label for="whatsapp" class="form-label">
+                                    No. WhatsApp
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="tel" 
+                                       id="whatsapp" 
+                                       name="whatsapp" 
+                                       class="form-input" 
+                                       placeholder="08xxxxxxxxxx"
+                                       required>
+                            </div>
+
+                            {{-- Instansi/Sekolah --}}
+                            <div class="form-group">
+                                <label for="instansi" class="form-label">
+                                    Instansi/Sekolah
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" 
+                                       id="instansi" 
+                                       name="instansi" 
+                                       class="form-input" 
+                                       placeholder="Nama sekolah/universitas"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            {{-- Kota/Kabupaten --}}
+                            <div class="form-group">
+                                <label for="kota" class="form-label">
+                                    Kota/Kabupaten
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" 
+                                       id="kota" 
+                                       name="kota" 
+                                       class="form-input" 
+                                       placeholder="Kota/Kabupaten tempat tinggal"
+                                       required>
+                            </div>
+
+                            {{-- Status --}}
+                            <div class="form-group">
+                                <label for="status" class="form-label">
+                                    Status
+                                    <span class="required">*</span>
+                                </label>
+                                <select id="status" name="status" class="form-select" required>
+                                    <option value="">Pilih Status</option>
+                                    <option value="Pelajar SD">Pelajar SD</option>
+                                    <option value="Pelajar SMP">Pelajar SMP</option>
+                                    <option value="Pelajar SMA/SMK">Pelajar SMA/SMK</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                    <option value="Umum">Umum</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Alasan Mengikuti --}}
+                        <div class="form-group">
+                            <label for="alasan" class="form-label">
+                                Alasan Mengikuti Kegiatan
+                            </label>
+                            <textarea id="alasan" 
+                                      name="alasan" 
+                                      rows="4" 
+                                      class="form-input" 
+                                      placeholder="Ceritakan alasan Anda ingin mengikuti kegiatan ini (opsional)"></textarea>
+                        </div>
+
+                        {{-- Hidden Fields --}}
+                        <input type="hidden" name="kegiatan" value="{{ $article->title }}">
+                        <input type="hidden" name="tanggal_daftar" id="tanggal_daftar">
+
+                        {{-- Submit Button --}}
+                        <button type="submit" class="btn-register" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Kirim Pendaftaran
+                        </button>
+
+                        <p class="text-xs text-gray-500 text-center mt-4">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            Data Anda akan kami jaga kerahasiaannya dan hanya digunakan untuk keperluan pendaftaran kegiatan ini.
+                        </p>
+                    </form>
+                </div>
+                @endif
                 
                 {{-- Share Section --}}
                 <div class="mt-10 bg-gradient-to-br from-tosca-50 to-yellow-50 rounded-2xl p-8 border border-tosca-100">
@@ -214,13 +497,21 @@
                     </div>
                 </div>
                 
-                {{-- Back Button --}}
+                {{-- Back Button - UPDATED --}}
                 <div class="mt-10 text-center lg:text-left">
-                    <a href="{{ route('artikel.index') }}" 
-                       class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-tosca-500 to-tosca-600 text-white rounded-full font-bold hover:shadow-xl transition-all group">
-                        <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
-                        Kembali ke Daftar Artikel
-                    </a>
+                    @if($article->type == 'berita')
+                        <a href="{{ route('berita.index') }}" 
+                           class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-tosca-500 to-tosca-600 text-white rounded-full font-bold hover:shadow-xl transition-all group">
+                            <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                            Kembali ke Daftar Berita
+                        </a>
+                    @else
+                        <a href="{{ route('kegiatan.index') }}" 
+                           class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 rounded-full font-bold hover:shadow-xl transition-all group">
+                            <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                            Kembali ke Daftar Kegiatan
+                        </a>
+                    @endif
                 </div>
             </div>
 
@@ -264,27 +555,33 @@
                                 <p class="font-bold text-gray-900">{{ ucfirst($article->type) }}</p>
                             </div>
                         </div>
+
+                        @if($article->type == 'kegiatan')
+                        <div class="h-px bg-gray-200"></div>
+                        
+                        {{-- Quick Register Button in Sidebar --}}
+                        <a href="#registration-section" 
+                           class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 rounded-xl font-bold hover:shadow-lg transition-all">
+                            <i class="fas fa-user-plus"></i>
+                            Daftar Kegiatan
+                        </a>
+                        @endif
                     </div>
                 </div>
 
-                {{-- Related Links --}}
+                {{-- Related Links - UPDATED --}}
                 <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl p-6 border border-yellow-200">
                     <h3 class="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
                         <i class="fas fa-bookmark text-yellow-600"></i>
                         Halaman Terkait
                     </h3>
                     <div class="space-y-3">
-                        <a href="{{ route('artikel.index') }}" 
-                           class="flex items-center gap-3 text-gray-700 hover:text-tosca-600 transition-colors group">
-                            <i class="fas fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
-                            <span class="text-sm font-semibold">Semua Artikel</span>
-                        </a>
-                        <a href="{{ route('artikel.index', ['filter' => 'berita']) }}" 
+                        <a href="{{ route('berita.index') }}" 
                            class="flex items-center gap-3 text-gray-700 hover:text-tosca-600 transition-colors group">
                             <i class="fas fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
                             <span class="text-sm font-semibold">Berita WPI</span>
                         </a>
-                        <a href="{{ route('artikel.index', ['filter' => 'kegiatan']) }}" 
+                        <a href="{{ route('kegiatan.index') }}" 
                            class="flex items-center gap-3 text-gray-700 hover:text-tosca-600 transition-colors group">
                             <i class="fas fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
                             <span class="text-sm font-semibold">Kegiatan WPI</span>
@@ -301,7 +598,7 @@
     </div>
 </section>
 
-{{-- CTA SECTION --}}
+{{-- CTA SECTION - UPDATED --}}
 <section class="py-20 lg:py-28 bg-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <div class="mb-8">
@@ -311,19 +608,27 @@
         </div>
         
         <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Baca Artikel <span class="gradient-text">Lainnya</span>
+            Baca <span class="bg-gradient-to-r from-tosca-500 to-yellow-400 bg-clip-text text-transparent">{{ $article->type == 'berita' ? 'Berita' : 'Kegiatan' }}</span> Lainnya
         </h2>
         <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Jelajahi lebih banyak informasi menarik seputar kewirausahaan pelajar dan kegiatan WPI
+            Jelajahi lebih banyak informasi menarik seputar {{ $article->type == 'berita' ? 'berita' : 'kegiatan' }} Wirausaha Pelajar Indonesia
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('artikel.index') }}" 
-               class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
-                LIHAT SEMUA ARTIKEL
-                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-            </a>
+            @if($article->type == 'berita')
+                <a href="{{ route('berita.index') }}" 
+                   class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-br from-tosca-500 to-tosca-600 text-white rounded-full text-base font-bold group hover:shadow-lg transition-all">
+                    LIHAT SEMUA BERITA
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            @else
+                <a href="{{ route('kegiatan.index') }}" 
+                   class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 rounded-full text-base font-bold group hover:shadow-lg transition-all">
+                    LIHAT SEMUA KEGIATAN
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            @endif
             <a href="/" 
-               class="btn-secondary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold">
+               class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-tosca-500 text-tosca-600 rounded-full text-base font-bold hover:bg-tosca-50 transition-colors">
                 KEMBALI KE BERANDA
             </a>
         </div>
@@ -339,5 +644,83 @@
             alert('Link berhasil disalin!');
         });
     }
+
+    // Registration Form Handler
+    @if($article->type == 'kegiatan')
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertContainer = document.getElementById('alert-container');
+        
+        // Set tanggal daftar otomatis
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        document.getElementById('tanggal_daftar').value = formattedDate;
+
+        // GANTI DENGAN URL GOOGLE APPS SCRIPT ANDA
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwmNslIj0KohPdOJGLErjXfQQnibfB3wvP4C3xw0LIwdzZfhuzASVTTA_TQtj2PIzJmPA/exec';
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable button dan tampilkan loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Mengirim...';
+            
+            // Hapus alert sebelumnya
+            alertContainer.innerHTML = '';
+            
+            // Ambil data form
+            const formData = new FormData(form);
+            
+            // Kirim ke Google Spreadsheet
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    // Tampilkan success message
+                    alertContainer.innerHTML = `
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Pendaftaran berhasil! Terima kasih telah mendaftar. Kami akan menghubungi Anda segera.
+                        </div>
+                    `;
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Scroll ke alert
+                    alertContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    throw new Error('Gagal mengirim data');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alertContainer.innerHTML = `
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        Terjadi kesalahan. Silakan coba lagi atau hubungi admin.
+                    </div>
+                `;
+            })
+            .finally(() => {
+                // Enable button kembali
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pendaftaran';
+            });
+        });
+
+        // Validasi nomor WhatsApp
+        const whatsappInput = document.getElementById('whatsapp');
+        whatsappInput.addEventListener('input', function(e) {
+            // Hanya izinkan angka
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    });
+    @endif
 </script>
 @endpush

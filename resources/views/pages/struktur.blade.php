@@ -271,6 +271,93 @@
         color: white;
         transform: translateY(-2px);
     }
+
+    /* Filter Styles */
+    .filter-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 2rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        border: 2px solid #e2e8f0;
+        background: white;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .filter-btn:hover {
+        border-color: #14b8a6;
+        color: #14b8a6;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+    }
+
+    .filter-btn.active {
+        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        border-color: #14b8a6;
+        color: white;
+        box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    }
+
+    .filter-btn .badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.25rem 0.5rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .filter-btn.active .badge {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Leadership Group Hidden State */
+    .leadership-group {
+        display: none;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .leadership-group.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Filter */
+    @media (max-width: 640px) {
+        .filter-container {
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+
+        .filter-btn .badge {
+            font-size: 0.65rem;
+        }
+    }
 </style>
 @endpush
 
@@ -415,6 +502,337 @@
                                     <span>Bertanggung jawab atas perkembangan organisasi</span>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- LEADERSHIP SECTION WITH FILTER --}}
+<section class="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden" id="leadership-section">
+    {{-- Background Decoration --}}
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 right-20 w-96 h-96 bg-tosca-200 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-tosca-100 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-4">
+                STRUKTUR PIMPINAN
+            </span>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Pimpinan <span class="gradient-text">WPI</span>
+            </h2>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-8"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Jajaran pimpinan yang mengarahkan visi, strategi, dan gerak organisasi Wirausaha Pelajar Indonesia
+            </p>
+        </div>
+
+        {{-- FILTER BUTTONS --}}
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-users"></i>
+                Semua
+                <span class="badge">9</span>
+            </button>
+            <button class="filter-btn" data-filter="founder">
+                <i class="fas fa-star"></i>
+                Pendiri
+                <span class="badge">3</span>
+            </button>
+            <button class="filter-btn" data-filter="current">
+                <i class="fas fa-user-tie"></i>
+                Pimpinan Aktif
+                <span class="badge">2</span>
+            </button>
+            <button class="filter-btn" data-filter="former">
+                <i class="fas fa-history"></i>
+                Mantan Pimpinan
+                <span class="badge">3</span>
+            </button>
+        </div>
+
+        {{-- LEADERSHIP GROUPS --}}
+        <div id="leadership-container">
+            {{-- Pendiri WPI --}}
+            <div class="leadership-group active" data-group="founder">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                        <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
+                        Pendiri WPI
+                        <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
+                    </h3>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Individu-individu yang menggagas dan meletakkan pondasi organisasi WPI
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {{-- Founder 1 --}}
+                    <div class="leadership-minimalist-card">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/founder.jpeg') }}" alt="Kak Bekky" class="leader-image">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
+                                FOUNDER
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Kak Bekky</h3>
+                            <p class="leader-position">Pendiri Wirausaha Pelajar Indonesia</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Penggagas utama visi dan arah besar WPI. Berperan sebagai pembina utama organisasi di tingkat nasional dan penentu kebijakan strategis.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Co-Founder 1 --}}
+                    <div class="leadership-minimalist-card">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/cofounder.jpeg') }}" alt="Rezza Artha" class="leader-image">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
+                                CO-FOUNDER
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Rezza Artha</h3>
+                            <p class="leader-position">Wakil Pendiri WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Berperan aktif dalam perumusan kebijakan strategis, pengembangan organisasi secara nasional, dan pembentukan struktur kepemimpinan.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Co-Founder 2 --}}
+                    <div class="leadership-minimalist-card">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/cofounder2.png') }}" alt="Adnan Mughoffar" class="leader-image">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
+                                CO-FOUNDER
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Adnan Mughoffar</h3>
+                            <p class="leader-position">Wakil Pendiri WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Mendukung pengelolaan organisasi, penguatan struktur kepemimpinan, dan pengembangan jaringan strategis WPI.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Pimpinan Nasional Saat Ini --}}
+            <div class="leadership-group active" data-group="current">
+                <div class="text-center mb-12 mt-20">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                        <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                        Pimpinan Nasional Saat Ini
+                        <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                    </h3>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Kepemimpinan yang sedang menjabat dan bertanggung jawab atas operasional organisasi
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    {{-- President --}}
+                    <div class="leadership-minimalist-card">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/pres.png') }}" alt="Ismail" class="leader-image">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-tosca-500 to-tosca-600 text-white">
+                                PRESIDENT
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Ismail</h3>
+                            <p class="leader-position">President WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Bertanggung jawab atas kepemimpinan nasional, pengambilan keputusan strategis, serta pengelolaan seluruh program dan cabang WPI.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Vice President --}}
+                    <div class="leadership-minimalist-card">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/wapres.png') }}" alt="Yusuf Budi Raharjo" class="leader-image">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
+                                VICE PRESIDENT
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Yusuf Budi Raharjo</h3>
+                            <p class="leader-position">Vice President WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Mendampingi Presiden dalam menjalankan organisasi serta mengoordinasikan pelaksanaan program nasional dan daerah.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Mantan Pimpinan Nasional --}}
+            <div class="leadership-group active" data-group="former">
+                <hr class="timeline-divider">
+
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                        <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+                        Mantan Pimpinan Nasional
+                        <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+                    </h3>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Para pemimpin yang telah berkontribusi dalam perjalanan WPI sebelumnya
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {{-- Mantan President 1 --}}
+                    <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/mantan-pres-1.jpeg') }}" alt="Rosyad" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                                PRESIDENT 2022-2025
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Rosyad</h3>
+                            <p class="leader-position">Mantan President WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Memimpin WPI pada periode 2022-2025. Berhasil mengembangkan dan meluncurkan program wirausaha pelajar nasional.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Mantan President 2 --}}
+                    <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/mantan-pres-2.jpeg') }}" alt="Denni Arnanda" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                                PRESIDENT 2019-2021
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Denni Arnanda</h3>
+                            <p class="leader-position">Mantan President WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Memimpin WPI pada periode 2019-2021. Fokus pada penguatan struktur internal dan kolaborasi dengan lembaga pendidikan.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Mantan President 3 --}}
+                    <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
+                        <div class="leader-image-container">
+                            <img src="{{ asset('images/mantan-pres-3.jpeg') }}" alt="Iqbal" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
+                            <div class="leader-overlay"></div>
+                            <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
+                                PRESIDENT 2019-2021
+                            </div>
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Iqbal</h3>
+                            <p class="leader-position">Mantan President WPI</p>
+                            <hr class="leader-divider">
+                            <p class="leader-description">
+                                Memimpin WPI pada periode 2019-2021, Berperan dalam konsolidasi organisasi dan pengembangan program dasar wirausaha pelajar.
+                            </p>
+                            <div class="leader-social">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -805,304 +1223,6 @@
     </div>
 </section>
 
-{{-- LEADERSHIP SECTION --}}
-<section class="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-    {{-- Background Decoration --}}
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 right-20 w-96 h-96 bg-tosca-200 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-tosca-100 text-tosca-700 rounded-full text-sm font-bold tracking-wider mb-4">
-                STRUKTUR PIMPINAN
-            </span>
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Pimpinan <span class="gradient-text">WPI</span>
-            </h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-tosca-500 to-yellow-400 mx-auto rounded-full mb-8"></div>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Jajaran pimpinan yang mengarahkan visi, strategi, dan gerak organisasi Wirausaha Pelajar Indonesia
-            </p>
-        </div>
-        
-        {{-- Pendiri WPI --}}
-        <div class="text-center mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
-                <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
-                Pendiri WPI
-                <span class="w-3 h-3 bg-tosca-500 rounded-full"></span>
-            </h3>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Individu-individu yang menggagas dan meletakkan pondasi organisasi WPI
-            </p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {{-- Founder 1 --}}
-            <div class="leadership-minimalist-card">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/founder.jpeg') }}" alt="Kak Bekky" class="leader-image">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
-                        FOUNDER
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Kak Bekky</h3>
-                    <p class="leader-position">Pendiri Wirausaha Pelajar Indonesia</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Penggagas utama visi dan arah besar WPI. Berperan sebagai pembina utama organisasi di tingkat nasional dan penentu kebijakan strategis.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Co-Founder 1 --}}
-            <div class="leadership-minimalist-card">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/cofounder.jpeg') }}" alt="Rezza Artha" class="leader-image">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
-                        CO-FOUNDER
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Rezza Artha</h3>
-                    <p class="leader-position">Wakil Pendiri WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Berperan aktif dalam perumusan kebijakan strategis, pengembangan organisasi secara nasional, dan pembentukan struktur kepemimpinan.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Co-Founder 2 --}}
-            <div class="leadership-minimalist-card">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/cofounder2.png') }}" alt="Adnan Mughoffar" class="leader-image">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-tosca-400 to-tosca-500 text-white">
-                        CO-FOUNDER
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Adnan Mughoffar</h3>
-                    <p class="leader-position">Wakil Pendiri WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Mendukung pengelolaan organisasi, penguatan struktur kepemimpinan, dan pengembangan jaringan strategis WPI.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Pimpinan Nasional Saat Ini --}}
-        <div class="text-center mb-12 mt-20">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
-                <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
-                Pimpinan Nasional Saat Ini
-                <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
-            </h3>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Kepemimpinan yang sedang menjabat dan bertanggung jawab atas operasional organisasi
-            </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
-            {{-- President --}}
-            <div class="leadership-minimalist-card">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/pres.png') }}" alt="Ismail" class="leader-image">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-tosca-500 to-tosca-600 text-white">
-                        PRESIDENT
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Ismail</h3>
-                    <p class="leader-position">President WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Bertanggung jawab atas kepemimpinan nasional, pengambilan keputusan strategis, serta pengelolaan seluruh program dan cabang WPI.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Vice President --}}
-            <div class="leadership-minimalist-card">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/wapres.png') }}" alt="Yusuf Budi Raharjo" class="leader-image">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900">
-                        VICE PRESIDENT
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Yusuf Budi Raharjo</h3>
-                    <p class="leader-position">Vice President WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Mendampingi Presiden dalam menjalankan organisasi serta mengoordinasikan pelaksanaan program nasional dan daerah.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="timeline-divider">
-
-        {{-- Mantan Pimpinan Nasional --}}
-        <div class="text-center mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
-                <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
-                Mantan Pimpinan Nasional
-                <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
-            </h3>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Para pemimpin yang telah berkontribusi dalam perjalanan WPI sebelumnya
-            </p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {{-- Mantan President 1 --}}
-            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/mantan-pres-1.jpeg') }}" alt="Nama Mantan President 1" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
-                        PRESIDENT 2022-2025
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Rosyad</h3>
-                    <p class="leader-position">Mantan President WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Memimpin WPI pada periode 2022-2025. Berhasil mengembangkan dan meluncurkan program wirausaha pelajar nasional.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mantan President 2 --}}
-            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/mantan-pres-2.jpeg') }}" alt="Denni Arnanda" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
-                        PRESIDENT 2019-2021
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Denni Arnanda</h3>
-                    <p class="leader-position">Mantan President WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Memimpin WPI pada periode 2019-2021. Fokus pada penguatan struktur internal dan kolaborasi dengan lembaga pendidikan.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mantan President 3 --}}
-            <div class="leadership-minimalist-card opacity-90 hover:opacity-100">
-                <div class="leader-image-container">
-                    <img src="{{ asset('images/mantan-pres-3.jpeg') }}" alt="Nama Mantan President 3" class="leader-image grayscale hover:grayscale-0 transition-all duration-500">
-                    <div class="leader-overlay"></div>
-                    <div class="leader-badge bg-gradient-to-r from-gray-400 to-gray-500 text-white">
-                        PRESIDENT 2019-2021
-                    </div>
-                </div>
-                <div class="leader-info">
-                    <h3 class="leader-name">Iqbal</h3>
-                    <p class="leader-position">Mantan President WPI</p>
-                    <hr class="leader-divider">
-                    <p class="leader-description">
-                        Memimpin WPI pada periode 2019-2021, Berperan dalam konsolidasi organisasi dan pengembangan program dasar wirausaha pelajar.
-                    </p>
-                    <div class="leader-social">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 {{-- CTA SECTION --}}
 <section class="py-20 lg:py-28 bg-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -1131,3 +1251,38 @@
 </section>
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const leadershipGroups = document.querySelectorAll('.leadership-group');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter leadership groups
+            if (filter === 'all') {
+                leadershipGroups.forEach(group => {
+                    group.classList.add('active');
+                });
+            } else {
+                leadershipGroups.forEach(group => {
+                    const groupType = group.getAttribute('data-group');
+                    if (groupType === filter) {
+                        group.classList.add('active');
+                    } else {
+                        group.classList.remove('active');
+                    }
+                });
+            }
+        });
+    });
+});
+</script>
+@endpush

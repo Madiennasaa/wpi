@@ -148,27 +148,24 @@
 
 {{-- TUJUAN SECTION --}}
 <section class="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-    {{-- Background Decoration --}}
     <div class="absolute inset-0 opacity-5">
         <div class="absolute top-40 left-10 w-72 h-72 bg-tosca-200 rounded-full blur-3xl"></div>
         <div class="absolute bottom-40 right-10 w-72 h-72 bg-yellow-200 rounded-full blur-3xl"></div>
     </div>
-    
+
     <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
-            
+
             {{-- Goal 1 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-white">01</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
-                                <i class="fas fa-seedling text-2xl text-tosca-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Program Edukasi Kewirausahaan</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300">
+                <img src="/images/goals/edukasi.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-tosca-500 leading-none">01</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Program Edukasi Kewirausahaan
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Program pembelajaran kewirausahaan bagi pelajar melalui seminar, workshop, dan pelatihan yang dirancang untuk menanamkan mindset wirausaha sejak dini.
                             </p>
@@ -178,17 +175,15 @@
             </div>
 
             {{-- Goal 2 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-gray-900">02</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
-                                <i class="fas fa-coins text-2xl text-yellow-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Inkubasi Bisnis Pelajar</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300">
+                <img src="/images/goals/inkubasi.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-yellow-500 leading-none">02</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Inkubasi Bisnis Pelajar
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Program pendampingan bagi pelajar yang telah memiliki ide atau usaha rintisan untuk dikembangkan menjadi bisnis yang berkelanjutan.
                             </p>
@@ -198,17 +193,15 @@
             </div>
 
             {{-- Goal 3 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-white">03</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
-                                <i class="fas fa-chart-line text-2xl text-tosca-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Pelatihan Digital & Inovasi</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300">
+                <img src="/images/goals/digital.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-tosca-500 leading-none">03</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Pelatihan Digital & Inovasi
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Program peningkatan kemampuan pelajar dalam memanfaatkan teknologi digital, branding, dan pemasaran online untuk mendukung usaha mereka.
                             </p>
@@ -218,20 +211,17 @@
             </div>
 
             {{-- Goal 4 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-gray-900">04</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
-                                <i class="fas fa-trophy text-2xl text-yellow-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Event & Kompetisi Kewirausahaan</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300">
+                <img src="/images/goals/event.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-yellow-500 leading-none">04</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Event & Kompetisi Kewirausahaan
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Penyelenggaraan event, lomba, dan kegiatan kewirausahaan untuk menumbuhkan semangat kompetitif, kreativitas, dan inovasi pelajar.
-
                             </p>
                         </div>
                     </div>
@@ -239,17 +229,15 @@
             </div>
 
             {{-- Goal 5 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tosca-500 to-tosca-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-white">05</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-tosca-100 to-tosca-200 rounded-xl flex items-center justify-center mb-4 border-2 border-tosca-300">
-                                <i class="fas fa-project-diagram text-2xl text-tosca-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Kolaborasi & Jejaring Usaha</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-tosca-300 transition-all duration-300">
+                <img src="/images/goals/kolaborasi.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-tosca-500 leading-none">05</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Kolaborasi & Jejaring Usaha
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Program kolaborasi dengan sekolah, komunitas, dunia usaha, dan instansi terkait untuk memperluas jaringan dan peluang bagi pelajar.
                             </p>
@@ -259,17 +247,15 @@
             </div>
 
             {{-- Goal 6 --}}
-            <div class="goal-item flex">
-                <div class="goal-card bg-white rounded-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300 w-full">
-                    <div class="flex gap-6 items-start">
-                        <div class="goal-number flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold text-gray-900">06</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="goal-icon w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-300">
-                                <i class="fas fa-hands-helping text-2xl text-yellow-600"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Program Sosial & Pengabdian</h3>
+            <div class="goal-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-yellow-400 transition-all duration-300">
+                <img src="/images/goals/sosial.png" class="w-full h-40 md:h-48 object-cover" alt="">
+                <div class="p-8 lg:p-10">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl font-extrabold text-yellow-500 leading-none">06</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                                Program Sosial & Pengabdian
+                            </h3>
                             <p class="text-gray-600 leading-relaxed">
                                 Kegiatan kewirausahaan berbasis sosial yang mendorong pelajar berkontribusi nyata bagi masyarakat dan lingkungan sekitar.
                             </p>
@@ -281,6 +267,7 @@
         </div>
     </div>
 </section>
+
 
 {{-- STATS HIGHLIGHT --}}
 <section class="py-16 lg:py-20 bg-gradient-to-br from-tosca-600 via-tosca-500 to-tosca-400 relative overflow-hidden">

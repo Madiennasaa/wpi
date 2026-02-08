@@ -103,7 +103,11 @@
             </h1>
             
             <p class="text-xl lg:text-2xl text-tosca-50 leading-relaxed font-light max-w-3xl mx-auto">
-                Informasi terbaru seputar kegiatan, berita, dan perkembangan Wirausaha Pelajar Indonesia
+                @if($type == 'berita')
+                    Informasi dan berita terbaru seputar perkembangan Wirausaha Pelajar Indonesia
+                @elseif($type == 'kegiatan')
+                    Dokumentasi kegiatan dan event yang telah dilaksanakan oleh Wirausaha Pelajar Indonesia
+                @endif
             </p>
         </div>
     </div>
@@ -112,27 +116,6 @@
 {{-- FILTER & GRID SECTION --}}
 <section class="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        {{-- Filter Tabs --}}
-        <div class="flex justify-center mb-12 lg:mb-16">
-            <div class="inline-flex p-1.5 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <a href="{{ route('artikel.index') }}" 
-                   class="filter-tab px-8 py-3 rounded-xl font-bold transition-all {{ !request('filter') ? 'bg-gradient-to-br from-tosca-500 to-tosca-600 text-white shadow-md' : 'text-gray-600 hover:text-tosca-600' }}">
-                    <i class="fas fa-th-large mr-2"></i>
-                    Semua
-                </a>
-                <a href="{{ route('artikel.index', ['filter' => 'berita']) }}" 
-                   class="filter-tab px-8 py-3 rounded-xl font-bold transition-all {{ request('filter') == 'berita' ? 'bg-gradient-to-br from-tosca-500 to-tosca-600 text-white shadow-md' : 'text-gray-600 hover:text-tosca-600' }}">
-                    <i class="fas fa-newspaper mr-2"></i>
-                    Berita
-                </a>
-                <a href="{{ route('artikel.index', ['filter' => 'kegiatan']) }}" 
-                   class="filter-tab px-8 py-3 rounded-xl font-bold transition-all {{ request('filter') == 'kegiatan' ? 'bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 shadow-md' : 'text-gray-600 hover:text-yellow-600' }}">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    Kegiatan
-                </a>
-            </div>
-        </div>
 
         {{-- Articles Grid --}}
         @if($articles->count() > 0)
@@ -194,11 +177,11 @@
                 <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl mb-6">
                     <i class="fas fa-inbox text-5xl text-gray-400"></i>
                 </div>
-                <h3 class="font-display text-2xl font-bold text-gray-900 mb-3">Belum Ada Konten</h3>
+                <h3 class="font-display text-2xl font-bold text-gray-900 mb-3">Belum Ada {{ $title }}</h3>
                 <p class="text-gray-600 text-lg mb-8">Konten untuk kategori ini akan segera hadir</p>
-                <a href="{{ route('artikel.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-tosca-500 to-tosca-600 text-white rounded-full font-bold hover:shadow-lg transition-shadow">
+                <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-tosca-500 to-tosca-600 text-white rounded-full font-bold hover:shadow-lg transition-shadow">
                     <i class="fas fa-arrow-left"></i>
-                    Lihat Semua Artikel
+                    Kembali ke Beranda
                 </a>
             </div>
         @endif
@@ -215,17 +198,17 @@
         </div>
         
         <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Jangan Lewatkan <span class="gradient-text">Update Terbaru</span>
+            Jangan Lewatkan <span class="bg-gradient-to-r from-tosca-500 to-yellow-400 bg-clip-text text-transparent">Update Terbaru</span>
         </h2>
         <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             Ikuti terus informasi dan kegiatan terbaru dari Wirausaha Pelajar Indonesia
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold group">
+            <a href="https://wa.me/6285697818910" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 rounded-full text-base font-bold group hover:shadow-lg transition-all">
                 BERGABUNG DENGAN WPI
                 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>
-            <a href="/" class="btn-secondary inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold">
+            <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-tosca-500 text-tosca-600 rounded-full text-base font-bold hover:bg-tosca-50 transition-colors">
                 KEMBALI KE BERANDA
             </a>
         </div>

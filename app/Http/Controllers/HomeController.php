@@ -7,46 +7,61 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    // Halaman Home
     public function index()
     {
         $berita = Article::where('type', 'berita')
-            ->latest('id')
+            ->whereNotNull('published_at')
+            ->latest('published_at')
             ->take(3)
             ->get();
 
         $kegiatan = Article::where('type', 'kegiatan')
-            ->latest('id')
+            ->whereNotNull('published_at')
+            ->latest('published_at')
             ->take(3)
             ->get();
 
         return view('home', compact('berita', 'kegiatan'));
     }
 
-    public function blog(Request $request)
+    // Halaman khusus BERITA
+    public function berita()
     {
-        $query = Article::whereNotNull('published_at');
-
-        // Filter otomatis jika ada parameter ?filter=berita atau ?filter=kegiatan
-        if ($request->has('filter') && in_array($request->filter, ['berita', 'kegiatan'])) {
-            $query->where('type', $request->filter);
-        }
-
-        $articles = $query->orderByDesc('published_at')->paginate(9);
-
-        // Menentukan title dinamis berdasarkan filter
-        $title = 'Artikel & Kegiatan';
-        if($request->filter == 'berita') $title = 'Berita WPI';
-        if($request->filter == 'kegiatan') $title = 'Kegiatan WPI';
+        $articles = Article::where('type', 'berita')
+            ->whereNotNull('published_at')
+            ->orderByDesc('published_at')
+            ->paginate(9);
 
         return view('articles.index', [
-            'title' => $title,
-            'articles' => $articles
+            'title' => 'Berita WPI',
+            'articles' => $articles,
+            'type' => 'berita'
         ]);
     }
 
+    // Halaman khusus KEGIATAN
+    public function kegiatan()
+    {
+        $articles = Article::where('type', 'kegiatan')
+            ->whereNotNull('published_at')
+            ->orderByDesc('published_at')
+            ->paginate(9);
+
+        return view('articles.index', [
+            'title' => 'Kegiatan WPI',
+            'articles' => $articles,
+            'type' => 'kegiatan'
+        ]);
+    }
+
+    // Detail artikel (untuk berita maupun kegiatan)
     public function show($slug)
     {
-        $article = Article::where('slug', $slug)->firstOrFail();
+        $article = Article::where('slug', $slug)
+            ->whereNotNull('published_at')
+            ->firstOrFail();
+            
         return view('articles.show', compact('article'));
     }
 }
