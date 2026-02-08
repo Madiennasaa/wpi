@@ -5,6 +5,7 @@
 @section('meta_keywords', 'wirausaha pelajar, komunitas wirausaha, entrepreneur muda, wpi indonesia')
 @section('og_title', 'Wirausaha Pelajar Indonesia')
 @section('og_description', 'Jadilah bagian dari jaringan wirausaha pelajar terbesar di Indonesia')
+@section('og_image', asset('images/og-home.jpg'))         
 
 @push('styles')
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -600,13 +601,13 @@
                 </div>
 
                 <div class="mt-10">
-                    <a href="{{ route('artikel.index') }}"
-                       class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold group">
-                        BACA ARTIKEL LAINNYA
+                    <a href="{{ route('berita.index') }}"
+                    class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold group">
+                        BACA BERITA LAINNYA
                         <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                  d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
                 </div>
@@ -652,14 +653,14 @@
                     @endforeach
                 </div>
 
-                <div class="mt-8">
-                    <a href="{{ route('artikel.index') }}"
-                       class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold w-full justify-center group">
-                        LIHAT SEMUA KEGIATAN
+                <div class="mt-10">
+                    <a href="{{ route('kegiatan.index') }}"
+                    class="btn-secondary inline-flex items-center px-8 py-4 rounded-full font-bold group">
+                        BACA KEGIATAN LAINNYA
                         <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                  d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
                 </div>

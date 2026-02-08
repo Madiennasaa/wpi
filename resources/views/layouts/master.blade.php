@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'Wirausaha Pelajar Indonesia')</title>
 
-    <meta name="description" content="@yield('meta_description')">
-    <meta name="keywords" content="@yield('meta_keywords')">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="@yield('meta_description', 'Wirausaha Pelajar Indonesia adalah organisasi pelajar wirausaha di Indonesia')">
+
+    <meta name="keywords"
+        content="@yield('meta_keywords', 'WPI, wirausaha pelajar, pelajar indonesia')">
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="@yield('og_title')">
-    <meta property="og:description" content="@yield('og_description')">
+    <meta property="og:title"
+        content="@yield('og_title', 'Wirausaha Pelajar Indonesia')">
+
+    <meta property="og:description"
+        content="@yield('og_description', 'Organisasi pelajar wirausaha Indonesia')">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:image" content="@yield('og_image')">
+
+    <meta property="og:image"
+        content="@yield('og_image', asset('images/og-default.jpg'))">
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
