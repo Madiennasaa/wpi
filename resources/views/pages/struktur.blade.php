@@ -157,13 +157,15 @@
         position: relative;
         overflow: hidden;
         border-radius: 1rem 1rem 0 0;
-        height: 320px;
+        height: 420px;
+        background: #f1f5f9;
     }
     
     .leader-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center top;
         transition: transform 0.6s ease;
     }
     
@@ -323,7 +325,7 @@
 
     .ketua-image-wrapper {
         position: relative;
-        height: 400px;
+        height: 480px;
         overflow: hidden;
         background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
     }
@@ -332,6 +334,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center top;
         transition: transform 0.6s ease;
     }
 
@@ -380,7 +383,7 @@
         }
 
         .ketua-image-wrapper {
-            height: 300px;
+            height: 380px;
         }
 
         .ketua-info {
@@ -393,6 +396,10 @@
 
         .ketua-title {
             font-size: 0.875rem;
+        }
+
+        .leader-image-container {
+            height: 320px;
         }
     }
 </style>
